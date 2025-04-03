@@ -32,9 +32,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDescCorta = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtDescLArga = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -77,12 +77,12 @@
             this.txtNombre.Size = new System.Drawing.Size(318, 20);
             this.txtNombre.TabIndex = 2;
             // 
-            // textBox1
+            // txtDescCorta
             // 
-            this.textBox1.Location = new System.Drawing.Point(537, 24);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(310, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtDescCorta.Location = new System.Drawing.Point(537, 24);
+            this.txtDescCorta.Name = "txtDescCorta";
+            this.txtDescCorta.Size = new System.Drawing.Size(310, 20);
+            this.txtDescCorta.TabIndex = 3;
             // 
             // label3
             // 
@@ -93,12 +93,12 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Descripcion Larga:";
             // 
-            // textBox2
+            // txtDescLArga
             // 
-            this.textBox2.Location = new System.Drawing.Point(114, 64);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(733, 20);
-            this.textBox2.TabIndex = 5;
+            this.txtDescLArga.Location = new System.Drawing.Point(114, 64);
+            this.txtDescLArga.Name = "txtDescLArga";
+            this.txtDescLArga.Size = new System.Drawing.Size(733, 20);
+            this.txtDescLArga.TabIndex = 5;
             // 
             // label4
             // 
@@ -237,9 +237,9 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtDescLArga);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDescCorta);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -257,9 +257,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDescCorta;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtDescLArga;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;

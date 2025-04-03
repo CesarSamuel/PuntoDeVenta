@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|e:\\proyectos\\ferreteria erick\\codigo\\ferreteria\\ferreteria\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|e:\\proyectos\\ferreteria erick\\codigo\\ferreteria\\ferreteria\\forms\\frmaddproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmaddproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
@@ -54,11 +58,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "App.config",
+              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\App.config",
+              "RelativeDocumentMoniker": "Ferreteria\\App.config",
+              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\App.config*",
+              "RelativeToolTip": "Ferreteria\\App.config*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-04-03T20:26:31.347Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "frmAddProducto.cs",
               "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddProducto.cs",
               "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmAddProducto.cs",
@@ -71,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "frmAddProducto.cs [Dise\u00F1o]",
               "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddProducto.cs",
               "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmAddProducto.cs",
@@ -83,7 +100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "utilidades.cs",
               "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Conexion\\utilidades.cs",
               "RelativeDocumentMoniker": "Ferreteria\\Conexion\\utilidades.cs",
@@ -95,7 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Form1.cs",
               "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Form1.cs",
               "RelativeDocumentMoniker": "Ferreteria\\Form1.cs",
@@ -107,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Form1.cs [Dise\u00F1o]",
               "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Form1.cs",
               "RelativeDocumentMoniker": "Ferreteria\\Form1.cs",
@@ -118,7 +135,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "frmMenuPrincipal.cs [Dise\u00F1o]",
               "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmMenuPrincipal.cs",
               "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmMenuPrincipal.cs",
@@ -129,7 +146,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "frmAddUser.cs",
               "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddUser.cs",
               "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmAddUser.cs",
@@ -137,24 +154,22 @@
               "RelativeToolTip": "Ferreteria\\Forms\\frmAddUser.cs",
               "ViewState": "AgIAAOcAAAAAAAAAAAAywCUBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T22:04:57.721Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-28T22:04:57.721Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "frmAddUser.cs [Dise\u00F1o]",
               "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddUser.cs",
               "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmAddUser.cs",
               "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddUser.cs [Dise\u00F1o]",
               "RelativeToolTip": "Ferreteria\\Forms\\frmAddUser.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T21:45:54.863Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-03-28T21:45:54.863Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "frmMenuPrincipal.cs",
               "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmMenuPrincipal.cs",
               "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmMenuPrincipal.cs",
@@ -166,7 +181,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "frmListaUsuarios.cs [Dise\u00F1o]",
               "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmListaUsuarios.cs",
               "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmListaUsuarios.cs",
@@ -177,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "frmListaUsuarios.cs",
               "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmListaUsuarios.cs",
               "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmListaUsuarios.cs",

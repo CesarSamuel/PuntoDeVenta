@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|e:\\proyectos\\ferreteria erick\\codigo\\ferreteria\\ferreteria\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|e:\\proyectos\\ferreteria erick\\codigo\\ferreteria\\ferreteria\\forms\\frmaddproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmaddproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\ferreteria\\forms\\frmaddproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmaddproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|e:\\proyectos\\ferreteria erick\\codigo\\ferreteria\\ferreteria\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\ferreteria\\forms\\frmlistausuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -58,42 +58,42 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "App.config",
               "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\App.config",
               "RelativeDocumentMoniker": "Ferreteria\\App.config",
-              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\App.config*",
-              "RelativeToolTip": "Ferreteria\\App.config*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAABPAAAAAAAAAA==",
+              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\App.config",
+              "RelativeToolTip": "Ferreteria\\App.config",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwDIAAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2025-04-03T20:26:31.347Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "frmAddProducto.cs",
               "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddProducto.cs",
               "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmAddProducto.cs",
-              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddProducto.cs",
-              "RelativeToolTip": "Ferreteria\\Forms\\frmAddProducto.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAuwCsAAABRAAAAAAAAAA==",
+              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddProducto.cs*",
+              "RelativeToolTip": "Ferreteria\\Forms\\frmAddProducto.cs*",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA8wCsAAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-03T04:11:06.289Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "frmAddProducto.cs [Dise\u00F1o]",
               "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddProducto.cs",
               "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmAddProducto.cs",
-              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddProducto.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Ferreteria\\Forms\\frmAddProducto.cs [Dise\u00F1o]",
+              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddProducto.cs [Dise\u00F1o]*",
+              "RelativeToolTip": "Ferreteria\\Forms\\frmAddProducto.cs [Dise\u00F1o]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-03T03:19:06.972Z",
               "EditorCaption": " [Dise\u00F1o]"
@@ -154,7 +154,8 @@
               "RelativeToolTip": "Ferreteria\\Forms\\frmAddUser.cs",
               "ViewState": "AgIAAOcAAAAAAAAAAAAywCUBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T22:04:57.721Z"
+              "WhenOpened": "2025-03-28T22:04:57.721Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -165,7 +166,8 @@
               "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddUser.cs [Dise\u00F1o]",
               "RelativeToolTip": "Ferreteria\\Forms\\frmAddUser.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T21:45:54.863Z"
+              "WhenOpened": "2025-03-28T21:45:54.863Z",
+              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
