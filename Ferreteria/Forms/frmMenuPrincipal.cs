@@ -14,6 +14,7 @@ namespace Ferreteria.Forms
     public partial class frmMenuPrincipal : Form
     {
         public string tipoUser, Usuario;
+        public int IdUsuario;
         //diccionario de formularios para abrirlos según el nodo seleccionado
         private readonly Dictionary<string, Func<Form>> _formularios = new Dictionary<string, Func<Form>>();
         // Diccionario para guardar nodos ocultos y sus padres
@@ -27,16 +28,18 @@ namespace Ferreteria.Forms
 
             // Llenar el diccionario con las opciones
             _formularios.Add("sndAddUser", () => new frmAddUser(tipoUser));
-            _formularios.Add("sndAddProducto", () => new frmAddProducto());
+            _formularios.Add("sndAddProducto", () => new frmAddProducto(IdUsuario));
             _formularios.Add("sndListaUsuarios", () => new frmListaUsuarios());
+            _formularios.Add("sndListaProductos", () => new frmListaProductos(IdUsuario));
             // Agregar más formularios según sea necesario
         }
 
-        public frmMenuPrincipal(string tipoUser, string Usuario)
+        public frmMenuPrincipal(string tipoUser, string Usuario, int idUsuario)
         {
             InitializeComponent();
             this.tipoUser = tipoUser;
             this.Usuario = Usuario;
+            this.IdUsuario = idUsuario;
         }
 
         public void abrirFormulario(Form formularioEnviado)
@@ -86,6 +89,7 @@ namespace Ferreteria.Forms
                 case "sndAddUser":
                 case "sndAddProducto":
                 case "sndListaUsuarios":
+                case "sndListaProductos":
                     AbrirFormularioSegunNodo(valorNodo, VentanaNueva);
                     break;
             }

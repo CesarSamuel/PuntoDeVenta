@@ -100,3 +100,4 @@ E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\obj\Debug\Ferreteria.
 E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\obj\Debug\Ferreteria.Forms.frmAddProducto.resources
 E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\obj\Debug\Ferreteria.Forms.frmListaUsuarios.resources
 E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\obj\Debug\Ferreteria.csproj.Up2Date
+E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\obj\Debug\Ferreteria.Forms.frmListaProductos.resources

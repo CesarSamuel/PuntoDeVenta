@@ -10,6 +10,7 @@ namespace Ferreteria
     public partial class Form1 : Form
     {
         public string tipoUsuario, Usuario;
+        public int IdUsuario;
         public Form1()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace Ferreteria
         {
             if (validarUsuario())
             {
-                frmMenuPrincipal frmMenu = new frmMenuPrincipal(tipoUsuario, Usuario);
+                frmMenuPrincipal frmMenu = new frmMenuPrincipal(tipoUsuario, Usuario, IdUsuario);
                 frmMenu.FormClosed += (s, args) => this.Close();
                 this.Hide();
                 frmMenu.Show();
@@ -99,7 +100,8 @@ namespace Ferreteria
                                 codigoResultado = reader.GetInt32(0); // Primera columna (Codigo)
                                 mensajeResultado = reader.GetString(1); // Segunda columna (Mensaje)
                                 tipoUsuario = reader.GetString(2);//Agregamos la columna de tipo de usuario 
-                                Usuario = reader.GetString(3);//Agregamos la columna de tipo de usuario 
+                                Usuario = reader.GetString(3);//Agregamos la columna de nombre de  usuario 
+                                IdUsuario = reader.GetInt32(4);//Agregamos la columna de idUsuario 
                             }
                         }
                     }
