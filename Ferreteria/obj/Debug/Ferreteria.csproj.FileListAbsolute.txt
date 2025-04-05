@@ -101,3 +101,10 @@ E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\obj\Debug\Ferreteria.
 E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\obj\Debug\Ferreteria.Forms.frmListaUsuarios.resources
 E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\obj\Debug\Ferreteria.csproj.Up2Date
 E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\obj\Debug\Ferreteria.Forms.frmListaProductos.resources
+E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\bin\Debug\Magick.Native-Q8-arm64.dll
+E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\bin\Debug\Magick.Native-Q8-x64.dll
+E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\bin\Debug\Magick.Native-Q8-x86.dll
+E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\bin\Debug\Magick.NET-Q8-AnyCPU.dll
+E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\bin\Debug\Magick.NET.Core.dll
+E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\bin\Debug\Magick.NET-Q8-AnyCPU.xml
+E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\bin\Debug\Magick.NET.Core.xml

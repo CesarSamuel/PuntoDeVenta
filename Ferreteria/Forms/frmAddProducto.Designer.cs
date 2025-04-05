@@ -52,6 +52,7 @@
             this.cboSucursal = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -206,7 +207,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(537, 332);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 9;
+            this.btnGuardar.TabIndex = 10;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -216,7 +217,7 @@
             this.button3.Location = new System.Drawing.Point(456, 332);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 19;
+            this.button3.TabIndex = 12;
             this.button3.Text = "Cancelar";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -226,7 +227,7 @@
             this.txtMonto.Location = new System.Drawing.Point(114, 92);
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(72, 20);
-            this.txtMonto.TabIndex = 20;
+            this.txtMonto.TabIndex = 4;
             this.txtMonto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtMonto.TextChanged += new System.EventHandler(this.txtMonto_TextChanged);
             this.txtMonto.Enter += new System.EventHandler(this.txtMonto_Enter);
@@ -240,7 +241,7 @@
             this.cboSucursal.Location = new System.Drawing.Point(114, 165);
             this.cboSucursal.Name = "cboSucursal";
             this.cboSucursal.Size = new System.Drawing.Size(140, 21);
-            this.cboSucursal.TabIndex = 21;
+            this.cboSucursal.TabIndex = 9;
             // 
             // label9
             // 
@@ -256,16 +257,28 @@
             this.btnLimpiar.Location = new System.Drawing.Point(276, 163);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiar.TabIndex = 23;
+            this.btnLimpiar.TabIndex = 11;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(373, 332);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 23;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Visible = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // frmAddProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(859, 398);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.cboSucursal);
             this.Controls.Add(this.label9);
@@ -291,6 +304,7 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddProducto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Producto";
             this.Load += new System.EventHandler(this.frmAddProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
@@ -324,5 +338,6 @@
         private System.Windows.Forms.ComboBox cboSucursal;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

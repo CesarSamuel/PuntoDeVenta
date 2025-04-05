@@ -1,9 +1,13 @@
 ﻿using Ferreteria.Conexion;
+using Ferreteria.Utilidades;
+using ImageMagick;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using TextBox = System.Windows.Forms.TextBox;
 
@@ -13,13 +17,17 @@ namespace Ferreteria.Forms
     {
         #region Variables Globales
         utilidades util = new utilidades();
-        public int IdUsuario;
+        Imagenes imgz = new Imagenes();
+        public int IdUsuario, IdProducto, idDepartamento, existencias, idSucursal;
+        public string nombre, descCorta, descLarga, codigoBarras, rutaImagen;
+        public decimal costoUnitario;
         #endregion 
 
         #region Constructor
-        public frmAddProducto(int idUsuario)
+        public frmAddProducto(int idUsuario, int idProducto = 0)
         {
-            IdUsuario = idUsuario;
+            this.IdUsuario = idUsuario;
+            this.IdProducto = idProducto;
             InitializeComponent();
         }
         #endregion
@@ -29,7 +37,7 @@ namespace Ferreteria.Forms
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "Imágenes (*.jpg; *.jpeg; *.png;)|*.jpg; *.jpeg; *.png;";
+                openFileDialog.Filter = "Imágenes (*.jpg; *.jpeg; *.png; *.webp)|*.jpg; *.jpeg; *.png; *.webp";
                 openFileDialog.FilterIndex = 1;
                 openFileDialog.RestoreDirectory = true;
 
@@ -37,22 +45,63 @@ namespace Ferreteria.Forms
                 {
                     try
                     {
-                        // Verificar que el archivo es una imagen válida
-                        using (var tempImage = Image.FromFile(openFileDialog.FileName))
+                        string rutaImagen = openFileDialog.FileName;
+                        txtRutaImagen.Text = rutaImagen;
+
+                        if (Path.GetExtension(rutaImagen).ToLower() == ".webp")
                         {
-                            // Si llegamos aquí, la imagen es válida
-                            string rutaImagen = openFileDialog.FileName;
-                            txtRutaImagen.Text = rutaImagen;
-                            pbImagen.BackgroundImage = (Image)tempImage.Clone();
-                            pbImagen.BackgroundImageLayout = ImageLayout.Stretch;
+                            // Configuración para evitar problemas de memoria
+                            var settings = new MagickReadSettings
+                            {
+                                Density = new Density(300, 300) // Ajusta según necesidad
+                            };
+
+                            using (var image = new MagickImage(rutaImagen, settings))
+                            {
+                                // Convertir a formato compatible con Bitmap
+                                image.Format = MagickFormat.Bmp;
+
+                                // Crear MemoryStream y cargar en Bitmap
+                                using (MemoryStream ms = new MemoryStream())
+                                {
+                                    image.Write(ms);
+                                    ms.Position = 0;
+                                    pbImagen.BackgroundImage = new Bitmap(ms);
+                                }
+                            }
                         }
+                        else
+                        {
+                            // Para formatos nativos
+                            pbImagen.BackgroundImage = Image.FromFile(rutaImagen);
+                        }
+
+                        pbImagen.BackgroundImageLayout = ImageLayout.Stretch;
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"El archivo seleccionado no es una imagen válida: {ex.Message}",
+                        MessageBox.Show($"Error al cargar la imagen: {ex.Message}\n\nDetalle técnico: {ex.ToString()}",
                                       "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        // Agrega esta clase helper
+        public static class WebPHelper
+        {
+            public static Image WebPToImage(string webPPath)
+            {
+                // Implementación usando alguna librería de conversión
+                // Esto es un ejemplo conceptual
+                byte[] webPBytes = File.ReadAllBytes(webPPath);
+                return ConvertWebPToBitmap(webPBytes); // Necesitarías una librería real aquí
+            }
+
+            private static Image ConvertWebPToBitmap(byte[] webPData)
+            {
+                // Implementación real necesitaría una librería como WebPWrapper
+                throw new NotImplementedException("Requiere librería de conversión WebP");
             }
         }
         #endregion
@@ -63,6 +112,10 @@ namespace Ferreteria.Forms
             txtMonto.Text = "$0.00";
             llenarDepartamentos();
             llenarSucursales();
+            if (IdProducto != 0)
+            {
+                consutlarProducto();
+            }
         }
         #endregion
 
@@ -249,23 +302,76 @@ namespace Ferreteria.Forms
 
         #endregion
 
+        #region Obtener campos
+        public void ObtenerCampos()
+        {
+            nombre = txtNombre.Text;
+            descCorta = txtDescCorta.Text;
+            descLarga = txtDescLarga.Text;
+            costoUnitario = ObtenerValorNumerico();
+            codigoBarras = txtCodigoBarras.Text;
+            idDepartamento = Convert.ToInt32(cboDepartamento.SelectedValue);
+            existencias = Convert.ToInt32(txtExistencias.Text);
+            rutaImagen = txtRutaImagen.Text;
+            idSucursal = Convert.ToInt32(cboSucursal.SelectedValue);
+        }
+        #endregion
+
         #endregion
 
         #region Guardar Producto
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if(IdProducto == 0)
+            {
+                GuardarProducto();
+            }
+            else
+            {
+                ModificarProducto();
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show(
+                "¿Está seguro que desea Eliminar este Producto?",
+                "Confirmación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                // Código si el usuario confirma
+                EliminarProducto();
+            }
+            else
+            {
+                // Código si el usuario cancela
+                MessageBox.Show("Operación cancelada");
+            }
+        }
+
+        private void EliminarProducto()
+        {
+            DataTable resultado = util.EjecutarSp("sp_EliminarProducto",
+                        new Dictionary<string, object>
+                        {
+                            ["IdProducto"] = IdProducto
+                        });
+            if (resultado.Rows[0][0].ToString() == "Eliminacion Correcta")
+            {
+                MessageBox.Show("Producto Eliminado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+        }
+
+        public void GuardarProducto()
+        {
             if (ValidarCamposProducto())
             {
                 // Obtener los valores de los campos
-                string nombre = txtNombre.Text;
-                string descCorta = txtDescCorta.Text;
-                string descLarga = txtDescLarga.Text;
-                decimal costoUnitario = ObtenerValorNumerico();
-                string codigoBarras = txtCodigoBarras.Text;
-                int idDepartamento = Convert.ToInt32(cboDepartamento.SelectedValue);
-                int existencias = Convert.ToInt32(txtExistencias.Text);
-                string rutaImagen = txtRutaImagen.Text;
-                int idSucursal = Convert.ToInt32(cboSucursal.SelectedValue);
+                ObtenerCampos();
 
                 // Crear un diccionario para los parámetros
                 var parametros = new Dictionary<string, object>
@@ -280,23 +386,14 @@ namespace Ferreteria.Forms
                     { "@UsuarioCreadorId", IdUsuario },
                     { "@DepartamentoId", idDepartamento },
                     { "@SucursalId", idSucursal }
-                    
-                    
+
+
                 };
                 // Ejecutar el procedimiento almacenado
                 DataTable resultado = util.EjecutarSp("sp_InsertarProducto", parametros);
-                if (resultado.Rows[0][0].ToString() == "1")
-                {
-                    MessageBox.Show("Producto guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    limpiarFormulario();
-                }
-                else
-                {
-                    MessageBox.Show("Error al guardar el producto. \n " + resultado.Rows[0][1].ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                ValidarSpProducto(resultado);
             }
         }
-
         public bool ValidarCamposProducto()
         {
             if (!validarCampo(txtNombre.Text)) {
@@ -327,10 +424,17 @@ namespace Ferreteria.Forms
                     MessageBox.Show("Favor de agregar un valor valido en existencias", "Error en Existencias", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }else { return false; }
-            } else if (!validarCampo(txtRutaImagen.Text)) {
-                MessageBox.Show("Favor de agregar una imagen", "Error en Imagen", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            } else {
+            } else if(IdProducto == 0) {
+                if (!validarCampo(txtRutaImagen.Text))
+                {
+                    MessageBox.Show("Favor de agregar una imagen", "Error en Imagen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }else {
                 return true;
             }
         }
@@ -342,6 +446,27 @@ namespace Ferreteria.Forms
             }else{
                 return true;
             }
+        }
+
+        public void ValidarSpProducto(DataTable resultado)
+        {
+            if (resultado.Rows[0][0].ToString() == "1")
+            {
+                MessageBox.Show("Producto guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Error al guardar el producto. \n " + resultado.Rows[0][1].ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
+
+        #region Limpiar campos
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            limpiarFormulario();
         }
 
         public void limpiarFormulario()
@@ -356,13 +481,52 @@ namespace Ferreteria.Forms
             cboSucursal.SelectedIndex = -1;
             txtCodigoBarras.Text = "";
             txtNombre.Focus();
+            pbImagen.BackgroundImage = Properties.Resources.LogoRecortado;
         }
         #endregion
 
-        #region Limpiar campos
-        private void btnLimpiar_Click(object sender, EventArgs e)
+        #region Modificar Producto
+        public void consutlarProducto()
         {
-            limpiarFormulario();
+            DataTable dtProducto = util.EjecutarSp("sp_ConsultarProducto", new Dictionary<string, object> { { "@IdProducto", IdProducto } });
+            if (dtProducto.Rows.Count > 0)
+            {
+                txtNombre.Text = dtProducto.Rows[0]["Nombre"].ToString();
+                txtDescCorta.Text = dtProducto.Rows[0]["DescripcionCorta"].ToString();
+                txtDescLarga.Text = dtProducto.Rows[0]["DescripcionLarga"].ToString();
+                txtCodigoBarras.Text = dtProducto.Rows[0]["CodigoDeBarras"].ToString();
+                txtExistencias.Text = dtProducto.Rows[0]["Existencias"].ToString();
+                cboDepartamento.SelectedValue = Convert.ToInt32(dtProducto.Rows[0]["DepartamentoId"]);
+                cboSucursal.SelectedValue = Convert.ToInt32(dtProducto.Rows[0]["SucursalId"]);
+                txtMonto.Text = "$" + dtProducto.Rows[0]["CostoUnitario"].ToString();
+                pbImagen.BackgroundImage = imgz.ByteArrayToImage(dtProducto.Rows[0]["Fotografia"] as byte[]);
+            }
+            btnGuardar.Text = "Modificar";
+            btnEliminar.Visible = true;
+        }
+
+        public void ModificarProducto()
+        {
+            if (ValidarCamposProducto())
+            {
+                ObtenerCampos();
+                var parametros = new Dictionary<string, object>
+                {
+                    { "@ProductoId", IdProducto },
+                    { "@Nombre", nombre },
+                    { "@DescripcionCorta", descCorta },
+                    { "@DescripcionLarga", descLarga },
+                    { "@CostoUnitario", costoUnitario },
+                    { "@Existencias", existencias },
+                    { "@CodigoDeBarras", codigoBarras },
+                    { "@RutaImagen", rutaImagen },
+                    { "@UsuarioModificadorId", IdUsuario },
+                    { "@DepartamentoId", idDepartamento },
+                    { "@SucursalId", idSucursal }
+                };
+                DataTable resultado = util.EjecutarSp("sp_ActualizarProducto", parametros);
+                ValidarSpProducto(resultado);
+            }
         }
         #endregion
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageMagick;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -10,8 +11,15 @@ namespace Ferreteria.Entidades
 {
     public class ProductoVista
     {
+        public int id { get; set; }
         public byte[] Imagen { get; set; }
         public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public string DescripcionLarga { get; set; }
+        public string CodigoDeBarras { get; set; }
+        public string Usuario { get; set; }
+        public string Departamento { get; set; }
+        public string Sucursal { get; set; }
         public decimal Precio { get; set; }
         public int Stock { get; set; }
 
@@ -23,11 +31,49 @@ namespace Ferreteria.Entidades
                 if (Imagen == null || Imagen.Length == 0)
                     return Properties.Resources.LogoRecortado;
 
-                using (MemoryStream ms = new MemoryStream(Imagen))
+                if (IsWebPImage(Imagen))
                 {
-                    var img = Image.FromStream(ms);
-                    return RedimensionarImagen(img, 120, 120); // Tamaño deseado
+                    // Configuración para mejor rendimiento
+                    var settings = new MagickReadSettings
+                    {
+                        Format = MagickFormat.WebP,
+                        ColorSpace = ColorSpace.sRGB
+                    };
+
+                    using (var magickImage = new MagickImage(Imagen, settings))
+                    {
+                        // Convertir a MemoryStream en formato BMP
+                        using (var memoryStream = new MemoryStream())
+                        {
+                            magickImage.Write(memoryStream, MagickFormat.Bmp);
+                            memoryStream.Position = 0; // Rebobinar el stream
+                            return new Bitmap(memoryStream);
+                        }
+                    }
                 }
+                else
+                {
+                    // Para formatos tradicionales
+                    using (MemoryStream ms = new MemoryStream(Imagen))
+                    {
+                        return Image.FromStream(ms);
+                    }
+                }
+            }
+        }
+
+        private bool IsWebPImage(byte[] imageData)
+        {
+            try
+            {
+                return imageData != null &&
+                       imageData.Length > 12 &&
+                       System.Text.Encoding.ASCII.GetString(imageData, 0, 4) == "RIFF" &&
+                       System.Text.Encoding.ASCII.GetString(imageData, 8, 4) == "WEBP";
+            }
+            catch
+            {
+                return false;
             }
         }
         // Método privado para redimensionamiento
