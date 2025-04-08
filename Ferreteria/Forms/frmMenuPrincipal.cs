@@ -31,6 +31,7 @@ namespace Ferreteria.Forms
             _formularios.Add("sndAddProducto", () => new frmAddProducto(IdUsuario));
             _formularios.Add("sndListaUsuarios", () => new frmListaUsuarios());
             _formularios.Add("sndListaProductos", () => new frmListaProductos(IdUsuario));
+            _formularios.Add("sndPuntoVenta", () => new frmVenta(IdUsuario));
             // Agregar más formularios según sea necesario
         }
 
@@ -90,6 +91,7 @@ namespace Ferreteria.Forms
                 case "sndAddProducto":
                 case "sndListaUsuarios":
                 case "sndListaProductos":
+                case "sndPuntoVenta":
                     AbrirFormularioSegunNodo(valorNodo, VentanaNueva);
                     break;
             }
@@ -115,19 +117,54 @@ namespace Ferreteria.Forms
 
         private void pnPrincipal_Resize(object sender, EventArgs e)
         {
+
             if (pnPrincipal.Controls.Count == 0) return;
 
             Form formularioHijo = pnPrincipal.Controls[0] as Form;
             if (formularioHijo == null) return;
 
-            // Centrar el formulario hijo nuevamente
-            formularioHijo.Location = new Point(
-                Math.Max((pnPrincipal.ClientSize.Width - formularioHijo.Width) / 2, 0),
-                Math.Max((pnPrincipal.ClientSize.Height - formularioHijo.Height) / 2, 0)
-            );
+            // Sincronizar el estado de la ventana
+            SynchronizeWindowState(formularioHijo);
 
             // Asegurar que el scroll se actualice
             pnPrincipal.PerformLayout();
+        }
+
+        private void SynchronizeWindowState(Form childForm)
+        {
+            if (childForm.WindowState == FormWindowState.Maximized)
+            {
+                // Configurar el formulario hijo para llenar el panel
+                childForm.WindowState = FormWindowState.Normal; // Importante resetear primero
+                childForm.FormBorderStyle = FormBorderStyle.None;
+                childForm.TopLevel = false;
+                childForm.Dock = DockStyle.Fill;
+                childForm.Size = pnPrincipal.ClientSize;
+                childForm.Location = Point.Empty;
+            }
+            else
+            {
+                // Restaurar configuración normal
+                childForm.FormBorderStyle = FormBorderStyle.Sizable;
+                childForm.Dock = DockStyle.None;
+                childForm.WindowState = FormWindowState.Normal;
+
+                // Centrar el formulario hijo
+                childForm.Location = new Point(
+                    Math.Max((pnPrincipal.ClientSize.Width - childForm.Width) / 2, 0),
+                    Math.Max((pnPrincipal.ClientSize.Height - childForm.Height) / 2, 0)
+                );
+            }
+        }
+
+        // También llama a este método cuando cargas el formulario hijo por primera vez
+        private void LoadChildForm(Form childForm)
+        {
+            childForm.TopLevel = false;
+            pnPrincipal.Controls.Clear();
+            pnPrincipal.Controls.Add(childForm);
+            SynchronizeWindowState(childForm);
+            childForm.Show();
         }
 
         // Ocultar nodo por nombre

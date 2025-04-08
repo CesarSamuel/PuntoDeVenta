@@ -50,6 +50,11 @@
             System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Clientes", new System.Windows.Forms.TreeNode[] {
             treeNode10,
             treeNode11});
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Punto de Venta");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Lista de Ventas");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Ventas", new System.Windows.Forms.TreeNode[] {
+            treeNode13,
+            treeNode14});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
             this.tvBotnesMenu = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -101,10 +106,20 @@
             treeNode12.ImageIndex = 2;
             treeNode12.Name = "ndClientes";
             treeNode12.Text = "Clientes";
+            treeNode13.ImageIndex = 10;
+            treeNode13.Name = "sndPuntoVenta";
+            treeNode13.Text = "Punto de Venta";
+            treeNode14.ImageIndex = 9;
+            treeNode14.Name = "nsdListaVenta";
+            treeNode14.Text = "Lista de Ventas";
+            treeNode15.ImageIndex = 8;
+            treeNode15.Name = "ndVentas";
+            treeNode15.Text = "Ventas";
             this.tvBotnesMenu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode4,
             treeNode9,
-            treeNode12});
+            treeNode12,
+            treeNode15});
             this.tvBotnesMenu.SelectedImageIndex = 0;
             this.tvBotnesMenu.Size = new System.Drawing.Size(162, 680);
             this.tvBotnesMenu.TabIndex = 0;
@@ -114,11 +129,17 @@
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "users.png");
-            this.imageList1.Images.SetKeyName(1, "almacen.png");
-            this.imageList1.Images.SetKeyName(2, "clientes.png");
+            this.imageList1.Images.SetKeyName(0, "clientes.png");
+            this.imageList1.Images.SetKeyName(1, "adduser.png");
+            this.imageList1.Images.SetKeyName(2, "delluser.png");
             this.imageList1.Images.SetKeyName(3, "adduser.png");
-            this.imageList1.Images.SetKeyName(4, "delluser.png");
+            this.imageList1.Images.SetKeyName(4, "almacen.png");
+            this.imageList1.Images.SetKeyName(5, "clientes.png");
+            this.imageList1.Images.SetKeyName(6, "delluser.png");
+            this.imageList1.Images.SetKeyName(7, "users.png");
+            this.imageList1.Images.SetKeyName(8, "ventas.png");
+            this.imageList1.Images.SetKeyName(9, "ListaVentas.png");
+            this.imageList1.Images.SetKeyName(10, "puntodeventa.png");
             // 
             // tableLayoutPanel1
             // 
@@ -203,6 +224,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Tag = "max";
             this.Text = "Materiales Barsvs";
             this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
