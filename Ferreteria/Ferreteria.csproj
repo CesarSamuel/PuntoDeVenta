@@ -286,6 +286,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Logo.ico" />
+    <None Include="Resources\money.png" />
     <None Include="Resources\Buscador.png" />
     <None Include="Resources\LogoRecortado.png" />
   </ItemGroup>

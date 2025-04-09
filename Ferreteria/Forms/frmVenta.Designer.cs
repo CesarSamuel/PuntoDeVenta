@@ -31,8 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVenta));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgProductos = new System.Windows.Forms.DataGridView();
+            this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCostoUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colExistencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFotografia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.pbImgProducto = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.lbCambio = new System.Windows.Forms.Label();
@@ -43,15 +50,14 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtIva = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtDescuentos = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtSubtotal = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.txtUsoCFDI = new System.Windows.Forms.TextBox();
@@ -59,33 +65,29 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
-            this.btnConsultarRFC = new System.Windows.Forms.Button();
             this.txtRFC = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtProducto = new System.Windows.Forms.TextBox();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCostoUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colExistencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFotografia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pbImgProducto = new System.Windows.Forms.PictureBox();
+            this.btnCobrar = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnConsultarRFC = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductos)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImgProducto)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImgProducto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -127,6 +129,57 @@
             this.dgProductos.TabIndex = 0;
             this.dgProductos.SelectionChanged += new System.EventHandler(this.dgProductos_SelectionChanged);
             // 
+            // colCodigo
+            // 
+            this.colCodigo.HeaderText = "Codigó";
+            this.colCodigo.Name = "colCodigo";
+            this.colCodigo.ReadOnly = true;
+            // 
+            // colNombre
+            // 
+            this.colNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.Name = "colNombre";
+            this.colNombre.ReadOnly = true;
+            // 
+            // colCostoUnitario
+            // 
+            this.colCostoUnitario.HeaderText = "Precio";
+            this.colCostoUnitario.Name = "colCostoUnitario";
+            this.colCostoUnitario.ReadOnly = true;
+            // 
+            // colExistencia
+            // 
+            this.colExistencia.HeaderText = "Existencia";
+            this.colExistencia.Name = "colExistencia";
+            this.colExistencia.ReadOnly = true;
+            // 
+            // colCantidad
+            // 
+            this.colCantidad.HeaderText = "Cantidad";
+            this.colCantidad.Name = "colCantidad";
+            this.colCantidad.ReadOnly = true;
+            // 
+            // colTotal
+            // 
+            this.colTotal.HeaderText = "Total";
+            this.colTotal.Name = "colTotal";
+            this.colTotal.ReadOnly = true;
+            // 
+            // colFotografia
+            // 
+            this.colFotografia.HeaderText = "Fotografia";
+            this.colFotografia.Name = "colFotografia";
+            this.colFotografia.ReadOnly = true;
+            this.colFotografia.Visible = false;
+            // 
+            // colDesc
+            // 
+            this.colDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colDesc.HeaderText = "Descripción";
+            this.colDesc.Name = "colDesc";
+            this.colDesc.ReadOnly = true;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.BackColor = System.Drawing.SystemColors.Control;
@@ -144,17 +197,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1018, 183);
             this.tableLayoutPanel2.TabIndex = 1;
-            // 
-            // pbImgProducto
-            // 
-            this.pbImgProducto.BackgroundImage = global::Ferreteria.Properties.Resources.LogoRecortado;
-            this.pbImgProducto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbImgProducto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbImgProducto.Location = new System.Drawing.Point(800, 3);
-            this.pbImgProducto.Name = "pbImgProducto";
-            this.pbImgProducto.Size = new System.Drawing.Size(215, 177);
-            this.pbImgProducto.TabIndex = 0;
-            this.pbImgProducto.TabStop = false;
             // 
             // panel1
             // 
@@ -211,6 +253,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnCancelar);
+            this.panel2.Controls.Add(this.btnCobrar);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.textBox9);
             this.panel2.Controls.Add(this.groupBox1);
@@ -223,7 +267,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(12, 67);
+            this.label13.Location = new System.Drawing.Point(12, 15);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(68, 13);
             this.label13.TabIndex = 8;
@@ -231,7 +275,7 @@
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(15, 90);
+            this.textBox9.Location = new System.Drawing.Point(15, 34);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(303, 64);
@@ -240,13 +284,13 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.textBox8);
+            this.groupBox1.Controls.Add(this.txtTotal);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.textBox7);
+            this.groupBox1.Controls.Add(this.txtIva);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.txtDescuentos);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.txtSubtotal);
             this.groupBox1.Location = new System.Drawing.Point(324, 15);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(216, 139);
@@ -263,12 +307,14 @@
             this.label12.TabIndex = 7;
             this.label12.Text = "Total:";
             // 
-            // textBox8
+            // txtTotal
             // 
-            this.textBox8.Location = new System.Drawing.Point(75, 101);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(129, 20);
-            this.textBox8.TabIndex = 6;
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Location = new System.Drawing.Point(75, 101);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(129, 20);
+            this.txtTotal.TabIndex = 6;
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
             // 
@@ -279,12 +325,14 @@
             this.label11.TabIndex = 5;
             this.label11.Text = "IVA:";
             // 
-            // textBox7
+            // txtIva
             // 
-            this.textBox7.Location = new System.Drawing.Point(75, 75);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(129, 20);
-            this.textBox7.TabIndex = 4;
+            this.txtIva.Enabled = false;
+            this.txtIva.Location = new System.Drawing.Point(75, 75);
+            this.txtIva.Name = "txtIva";
+            this.txtIva.Size = new System.Drawing.Size(129, 20);
+            this.txtIva.TabIndex = 4;
+            this.txtIva.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label10
             // 
@@ -295,12 +343,14 @@
             this.label10.TabIndex = 3;
             this.label10.Text = "Descuento:";
             // 
-            // textBox6
+            // txtDescuentos
             // 
-            this.textBox6.Location = new System.Drawing.Point(75, 45);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(129, 20);
-            this.textBox6.TabIndex = 2;
+            this.txtDescuentos.Enabled = false;
+            this.txtDescuentos.Location = new System.Drawing.Point(75, 45);
+            this.txtDescuentos.Name = "txtDescuentos";
+            this.txtDescuentos.Size = new System.Drawing.Size(129, 20);
+            this.txtDescuentos.TabIndex = 2;
+            this.txtDescuentos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label9
             // 
@@ -311,12 +361,15 @@
             this.label9.TabIndex = 1;
             this.label9.Text = "Subtotal:";
             // 
-            // textBox5
+            // txtSubtotal
             // 
-            this.textBox5.Location = new System.Drawing.Point(75, 19);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(129, 20);
-            this.textBox5.TabIndex = 0;
+            this.txtSubtotal.Enabled = false;
+            this.txtSubtotal.Location = new System.Drawing.Point(75, 19);
+            this.txtSubtotal.Name = "txtSubtotal";
+            this.txtSubtotal.ReadOnly = true;
+            this.txtSubtotal.Size = new System.Drawing.Size(129, 20);
+            this.txtSubtotal.TabIndex = 0;
+            this.txtSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tableLayoutPanel3
             // 
@@ -330,20 +383,9 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 79F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1018, 79);
             this.tableLayoutPanel3.TabIndex = 2;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::Ferreteria.Properties.Resources.LogoRecortado;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(897, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(118, 73);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // panel3
             // 
@@ -422,16 +464,6 @@
             this.txtCantidad.Text = "1";
             this.txtCantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button2
-            // 
-            this.button2.BackgroundImage = global::Ferreteria.Properties.Resources.Buscador;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(316, 40);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(32, 21);
-            this.button2.TabIndex = 8;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // txtNombreCliente
             // 
             this.txtNombreCliente.Enabled = false;
@@ -439,17 +471,6 @@
             this.txtNombreCliente.Name = "txtNombreCliente";
             this.txtNombreCliente.Size = new System.Drawing.Size(451, 20);
             this.txtNombreCliente.TabIndex = 7;
-            // 
-            // btnConsultarRFC
-            // 
-            this.btnConsultarRFC.BackgroundImage = global::Ferreteria.Properties.Resources.Buscador;
-            this.btnConsultarRFC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnConsultarRFC.Location = new System.Drawing.Point(396, 13);
-            this.btnConsultarRFC.Name = "btnConsultarRFC";
-            this.btnConsultarRFC.Size = new System.Drawing.Size(32, 21);
-            this.btnConsultarRFC.TabIndex = 6;
-            this.btnConsultarRFC.UseVisualStyleBackColor = true;
-            this.btnConsultarRFC.Click += new System.EventHandler(this.btnConsultarRFC_Click);
             // 
             // txtRFC
             // 
@@ -485,6 +506,7 @@
             this.txtProducto.Size = new System.Drawing.Size(245, 20);
             this.txtProducto.TabIndex = 2;
             this.txtProducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProducto_KeyDown);
+            this.txtProducto.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtProducto_PreviewKeyDown);
             // 
             // txtFecha
             // 
@@ -504,56 +526,82 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Fecha:";
             // 
-            // colCodigo
+            // pbImgProducto
             // 
-            this.colCodigo.HeaderText = "Codigó";
-            this.colCodigo.Name = "colCodigo";
-            this.colCodigo.ReadOnly = true;
+            this.pbImgProducto.BackgroundImage = global::Ferreteria.Properties.Resources.LogoRecortado;
+            this.pbImgProducto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbImgProducto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbImgProducto.Location = new System.Drawing.Point(800, 3);
+            this.pbImgProducto.Name = "pbImgProducto";
+            this.pbImgProducto.Size = new System.Drawing.Size(215, 177);
+            this.pbImgProducto.TabIndex = 0;
+            this.pbImgProducto.TabStop = false;
             // 
-            // colNombre
+            // btnCobrar
             // 
-            this.colNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.Name = "colNombre";
-            this.colNombre.ReadOnly = true;
+            this.btnCobrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnCobrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCobrar.FlatAppearance.BorderSize = 0;
+            this.btnCobrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.btnCobrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(83)))));
+            this.btnCobrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCobrar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCobrar.ForeColor = System.Drawing.Color.White;
+            this.btnCobrar.Location = new System.Drawing.Point(168, 104);
+            this.btnCobrar.Name = "btnCobrar";
+            this.btnCobrar.Size = new System.Drawing.Size(150, 50);
+            this.btnCobrar.TabIndex = 9;
+            this.btnCobrar.Text = "COBRAR";
+            this.btnCobrar.UseVisualStyleBackColor = false;
             // 
-            // colCostoUnitario
+            // pictureBox1
             // 
-            this.colCostoUnitario.HeaderText = "Precio";
-            this.colCostoUnitario.Name = "colCostoUnitario";
-            this.colCostoUnitario.ReadOnly = true;
+            this.pictureBox1.BackgroundImage = global::Ferreteria.Properties.Resources.LogoRecortado;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(897, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(118, 73);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
-            // colExistencia
+            // button2
             // 
-            this.colExistencia.HeaderText = "Existencia";
-            this.colExistencia.Name = "colExistencia";
-            this.colExistencia.ReadOnly = true;
+            this.button2.BackgroundImage = global::Ferreteria.Properties.Resources.Buscador;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Location = new System.Drawing.Point(316, 40);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(32, 21);
+            this.button2.TabIndex = 8;
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // colCantidad
+            // btnConsultarRFC
             // 
-            this.colCantidad.HeaderText = "Cantidad";
-            this.colCantidad.Name = "colCantidad";
-            this.colCantidad.ReadOnly = true;
+            this.btnConsultarRFC.BackgroundImage = global::Ferreteria.Properties.Resources.Buscador;
+            this.btnConsultarRFC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnConsultarRFC.Location = new System.Drawing.Point(396, 13);
+            this.btnConsultarRFC.Name = "btnConsultarRFC";
+            this.btnConsultarRFC.Size = new System.Drawing.Size(32, 21);
+            this.btnConsultarRFC.TabIndex = 6;
+            this.btnConsultarRFC.UseVisualStyleBackColor = true;
+            this.btnConsultarRFC.Click += new System.EventHandler(this.btnConsultarRFC_Click);
             // 
-            // colTotal
+            // btnCancelar
             // 
-            this.colTotal.HeaderText = "Total";
-            this.colTotal.Name = "colTotal";
-            this.colTotal.ReadOnly = true;
-            // 
-            // colFotografia
-            // 
-            this.colFotografia.HeaderText = "Fotografia";
-            this.colFotografia.Name = "colFotografia";
-            this.colFotografia.ReadOnly = true;
-            this.colFotografia.Visible = false;
-            // 
-            // colDesc
-            // 
-            this.colDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colDesc.HeaderText = "Descripción";
-            this.colDesc.Name = "colDesc";
-            this.colDesc.ReadOnly = true;
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(87)))), ((int)(((byte)(51)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Location = new System.Drawing.Point(15, 104);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(150, 50);
+            this.btnCancelar.TabIndex = 10;
+            this.btnCancelar.Text = "CANCELAR";
+            this.btnCancelar.UseVisualStyleBackColor = false;
             // 
             // frmVenta
             // 
@@ -571,7 +619,6 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgProductos)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbImgProducto)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -579,9 +626,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImgProducto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -614,13 +662,13 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtIva;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtDescuentos;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtSubtotal;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox txtCantidadPagada;
@@ -635,5 +683,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFotografia;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDesc;
+        private System.Windows.Forms.Button btnCobrar;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

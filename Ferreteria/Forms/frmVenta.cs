@@ -4,8 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Ferreteria.Forms
@@ -14,6 +17,8 @@ namespace Ferreteria.Forms
     {
         #region Variables Globales
         public int IdUsuario;
+        public decimal IVA;
+        public bool descuentos, facturacion;
         utilidades util = new utilidades();
         Imagenes imgz = new Imagenes();
         public int idCliente;
@@ -29,6 +34,17 @@ namespace Ferreteria.Forms
         {
             AsignarFecha();
             BuscarCliente();
+            IVA = decimal.Parse(configuracionesGlobales(1));
+            txtIva.Text = IVA.ToString("C2");
+            descuentos = Convert.ToBoolean(Convert.ToInt32(configuracionesGlobales(2)));
+            if (!descuentos)
+            {
+                txtDescuentos.Text = "Desactivado";
+            }
+            facturacion = Convert.ToBoolean(Convert.ToInt32(configuracionesGlobales(3)));
+            estilosbtnCobrar();
+            EstilizarDataGridViewPOS(); 
+            txtProducto.Focus(); // Enfocar el campo de producto al cargar el formulario
         }
 
         #region Asignacion de fecha inicial
@@ -123,6 +139,11 @@ namespace Ferreteria.Forms
         {
             decimal suma = dt.AsEnumerable().Sum(row => row.Field<decimal>("colTotal"));
             lbTotal.Text = suma.ToString("C2");
+            if (!facturacion)
+            {
+                txtSubtotal.Text = suma.ToString("C2");
+                txtTotal.Text = suma.ToString("C2");
+            }
         }
         private bool ValidarProductoCobrado()
         {
@@ -293,5 +314,124 @@ namespace Ferreteria.Forms
         {
             BuscarCliente();
         }
+
+        #region Configuraciones Globales
+        public string configuracionesGlobales(int idConfiguracion)
+        {
+            string Valor = "";
+            // Crear un diccionario para los parámetros
+            var parametros = new Dictionary<string, object>
+            {
+                    { "@idConfiguracion", idConfiguracion }
+                };
+            // Ejecutar el procedimiento almacenado
+            DataTable resultado = util.EjecutarSp("sp_ConsultarCfg", parametros);
+            if (resultado.Rows.Count != 0)
+            {
+                Valor = resultado.Rows[0]["valor"].ToString();
+            }
+
+            return Valor;
+        }
+        #endregion
+
+        #region Estilos del boton cobrar
+
+        // Agregar este método a tu clase
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
+        public void estilosbtnCobrar()
+        {
+            btnCobrar.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnCobrar.Width, btnCobrar.Height, 20, 20));
+            btnCancelar.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnCobrar.Width, btnCobrar.Height, 20, 20));
+        
+        }
+
+        private void txtProducto_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
+                MessageBox.Show("Se presionó F5 - Mostrar ayuda", "Tecla Detectada",
+                               MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Tu código aquí
+                e.IsInputKey = true; // Indicar que queremos manejar esta tecla
+            }
+        }
+
+        private void EstilizarDataGridViewPOS()
+        {
+            // Configuración básica
+            dgProductos.BorderStyle = BorderStyle.None;
+            dgProductos.BackgroundColor = Color.FromArgb(45, 45, 48); // Fondo oscuro elegante
+            dgProductos.GridColor = Color.FromArgb(64, 64, 64);
+
+            // Fuente y color de texto
+            dgProductos.DefaultCellStyle.Font = new Font("Segoe UI", 11);
+            dgProductos.DefaultCellStyle.ForeColor = Color.WhiteSmoke;
+            dgProductos.DefaultCellStyle.BackColor = Color.FromArgb(45, 45, 48);
+            dgProductos.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgProductos.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 122, 204); // Azul de selección
+
+            // Estilo de encabezados de columnas
+            dgProductos.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            dgProductos.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(37, 37, 38);
+            dgProductos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgProductos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgProductos.EnableHeadersVisualStyles = false;
+            dgProductos.ColumnHeadersHeight = 40;
+
+            // Estilo de filas alternas
+            dgProductos.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(60, 60, 60);
+
+            // Configuración de selección
+            dgProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgProductos.MultiSelect = false;
+            dgProductos.RowHeadersVisible = false; // Ocultar los headers de filas
+
+            // Ajustes de renderizado
+            dgProductos.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgProductos.RowTemplate.Height = 35;
+
+            // Efecto hover
+            dgProductos.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
+
+            // Configurar columnas específicas (ejemplo)
+            if (dgProductos.Columns.Count > 0)
+            {
+                // Columna de Precio (derecha-alineada)
+                if (dgProductos.Columns.Contains("colPrecio"))
+                {
+                    dgProductos.Columns["colPrecio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgProductos.Columns["colPrecio"].DefaultCellStyle.Format = "C2"; // Formato de moneda
+                    dgProductos.Columns["colPrecio"].DefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+                    dgProductos.Columns["colPrecio"].DefaultCellStyle.ForeColor = Color.FromArgb(0, 200, 83); // Verde para precios
+                }
+
+                // Columna de Cantidad (centrada)
+                if (dgProductos.Columns.Contains("Cantidad"))
+                {
+                    dgProductos.Columns["colCantidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+
+                // Columna de Importe (resaltada)
+                if (dgProductos.Columns.Contains("colTotal"))
+                {
+                    dgProductos.Columns["colTotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    dgProductos.Columns["colTotal"].DefaultCellStyle.Format = "C2";
+                    dgProductos.Columns["colTotal"].DefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+                    dgProductos.Columns["colTotal"].DefaultCellStyle.ForeColor = Color.FromArgb(255, 171, 25); // Amarillo/naranja
+                    dgProductos.Columns["colTotal"].DefaultCellStyle.BackColor = Color.FromArgb(50, 50, 50);
+                }
+            }
+
+            // Ajustar automáticamente el tamaño de las columnas
+            dgProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Deshabilitar edición directa
+            dgProductos.ReadOnly = true;
+        }
+
+
+        #endregion
     }
 }
