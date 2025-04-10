@@ -144,6 +144,7 @@
             // 
             // colNombre
             // 
+            this.colNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.colNombre.HeaderText = "Nombre";
             this.colNombre.Name = "colNombre";
             this.colNombre.ReadOnly = true;
@@ -151,10 +152,10 @@
             // 
             // colDecCorta
             // 
+            this.colDecCorta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colDecCorta.HeaderText = "Descripcion";
             this.colDecCorta.Name = "colDecCorta";
             this.colDecCorta.ReadOnly = true;
-            this.colDecCorta.Width = 88;
             // 
             // colCostoUnitario
             // 

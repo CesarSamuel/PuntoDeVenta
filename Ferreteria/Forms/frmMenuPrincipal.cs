@@ -31,6 +31,7 @@ namespace Ferreteria.Forms
             _formularios.Add("sndAddProducto", () => new frmAddProducto(IdUsuario));
             _formularios.Add("sndListaUsuarios", () => new frmListaUsuarios());
             _formularios.Add("sndListaProductos", () => new frmListaProductos(IdUsuario));
+            _formularios.Add("sndListaVenta", () => new frmListaVentas());
             _formularios.Add("sndPuntoVenta", () => new frmVenta(IdUsuario));
             // Agregar más formularios según sea necesario
         }
@@ -91,6 +92,7 @@ namespace Ferreteria.Forms
                 case "sndAddProducto":
                 case "sndListaUsuarios":
                 case "sndListaProductos":
+                case "sndListaVenta":
                 case "sndPuntoVenta":
                     AbrirFormularioSegunNodo(valorNodo, VentanaNueva);
                     break;
@@ -227,6 +229,7 @@ namespace Ferreteria.Forms
         {
             OcultarNodoPorNombre("Clientes");
         }
+
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {

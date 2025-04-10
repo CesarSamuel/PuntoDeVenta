@@ -22,6 +22,7 @@ namespace Ferreteria.Forms
         #region Variables Globales
         utilidades util = new utilidades();
         Imagenes imgz = new Imagenes();
+        Estilos estilos = new Estilos();
         public int IdUsuario;
         private DataTable datosOriginales; // Para guardar los datos sin filtrar
         #endregion
@@ -39,6 +40,7 @@ namespace Ferreteria.Forms
         {
             llenarGridProductos();
             dgProductos.Focus();
+            estilos.EstilizarDataGridViewPOS(dgProductos);
         }
         #endregion
 

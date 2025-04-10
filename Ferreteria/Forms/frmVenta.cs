@@ -16,11 +16,12 @@ namespace Ferreteria.Forms
     public partial class frmVenta : Form
     {
         #region Variables Globales
-        public int IdUsuario;
+        public int IdUsuario, idVenta;
         public decimal IVA;
         public bool descuentos, facturacion;
         utilidades util = new utilidades();
         Imagenes imgz = new Imagenes();
+        Estilos estilos = new Estilos();
         public int idCliente;
         #endregion
 
@@ -43,7 +44,7 @@ namespace Ferreteria.Forms
             }
             facturacion = Convert.ToBoolean(Convert.ToInt32(configuracionesGlobales(3)));
             estilosbtnCobrar();
-            EstilizarDataGridViewPOS(); 
+            estilos.EstilizarDataGridViewPOS(dgProductos);
             txtProducto.Focus(); // Enfocar el campo de producto al cargar el formulario
         }
 
@@ -94,13 +95,11 @@ namespace Ferreteria.Forms
                 if (!ValidarProductoCobrado())
                 {
                     BuscarProducto();
-                }                
+                }
                 txtProducto.Text = "";
                 txtCantidad.Text = "1"; // Reiniciar la cantidad a 1
             }
         }
-
-       
 
         #region Buscar Producto
         public void BuscarProducto()
@@ -114,6 +113,7 @@ namespace Ferreteria.Forms
                     int rowIndex = dgProductos.Rows.Add();
 
                     // Asignar valores a columnas específicas
+                    dgProductos.Rows[rowIndex].Cells["colId"].Value = row["Id"];
                     dgProductos.Rows[rowIndex].Cells["colCodigo"].Value = row["CodigoDeBarras"];
                     dgProductos.Rows[rowIndex].Cells["colNombre"].Value = row["Nombre"];
                     dgProductos.Rows[rowIndex].Cells["colCostoUnitario"].Value = row["CostoUnitario"];
@@ -123,9 +123,9 @@ namespace Ferreteria.Forms
                     dgProductos.Rows[rowIndex].Cells["colFotografia"].Value = row["Fotografia"];
                     dgProductos.Rows[rowIndex].Cells["colDesc"].Value = row["DescripcionCorta"];
                     MostrarImagen(row["Fotografia"] as byte[]);
-                }               
+                }
             }
-            
+
             validarTotal(ConvertGridToTable(dgProductos));
         }
         public void MostrarImagen(byte[] byteImg)
@@ -147,24 +147,22 @@ namespace Ferreteria.Forms
         }
         private bool ValidarProductoCobrado()
         {
-            if(dgProductos.Rows.Count != 0)
+            if (dgProductos.Rows.Count != 0)
             {
                 DataTable dtDatos = ConvertGridToTable(dgProductos);
 
-                validarTotal(dtDatos);
-
-                 // Buscar un valor específico (ejemplo: buscar ID = 5)
-                 DataRow resultado = dtDatos.AsEnumerable()
-                    .Where(row => row.Field<string>("colCodigo") == txtProducto.Text)
-                    .FirstOrDefault();
+                // Buscar un valor específico (ejemplo: buscar ID = 5)
+                DataRow resultado = dtDatos.AsEnumerable()
+                   .Where(row => row.Field<string>("colCodigo") == txtProducto.Text)
+                   .FirstOrDefault();
 
                 if (resultado != null)
                 {
                     // Editar los valores si se encontró
                     resultado["colCantidad"] = int.Parse(resultado["colCantidad"].ToString()) + int.Parse(txtCantidad.Text);
-                    resultado["colTotal"] =int.Parse(resultado["colCantidad"].ToString()) * decimal.Parse(resultado["colCostoUnitario"].ToString());
+                    resultado["colTotal"] = int.Parse(resultado["colCantidad"].ToString()) * decimal.Parse(resultado["colCostoUnitario"].ToString());
 
-                    if(ValidarExistenciasProducto(int.Parse(resultado["colCantidad"].ToString()) , int.Parse(resultado["colExistencia"].ToString())))
+                    if (ValidarExistenciasProducto(int.Parse(resultado["colCantidad"].ToString()), int.Parse(resultado["colExistencia"].ToString())))
                     {
                         // Actualizar el DataGridView
                         ActualizarGridDesdeTable(dgProductos, dtDatos);
@@ -172,6 +170,7 @@ namespace Ferreteria.Forms
                         int rowIndex = dtDatos.Rows.IndexOf(resultado);
                         dgProductos.Rows[rowIndex].Selected = true;
                         dgProductos.FirstDisplayedScrollingRowIndex = rowIndex;
+                        validarTotal(dtDatos);
                         return true;
                     }
                     else
@@ -179,9 +178,9 @@ namespace Ferreteria.Forms
                         // Eliminar la fila del DataGridView
                         dgProductos.Rows.RemoveAt(dgProductos.Rows.Count - 1);
                         return false;
-                    }   
+                    }
                 }
-                else 
+                else
                 {
                     return false;
                 }
@@ -197,7 +196,7 @@ namespace Ferreteria.Forms
             if (cantidad > existencia)
             {
                 MessageBox.Show("No hay suficiente existencia del producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
                 return false;
             }
             else
@@ -300,13 +299,17 @@ namespace Ferreteria.Forms
                 }
             }
         }
+        public void Cambio()
+        {
+            lbCambio.Text = "$" + (decimal.Parse(txtCantidadPagada.Text) - decimal.Parse(lbTotal.Text.Replace("$", "").Replace(",", ""))).ToString();
+        }
 
         private void txtCantidadPagada_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 e.SuppressKeyPress = true; // Evita el sonido del sistema
-                lbCambio.Text = "$" + (decimal.Parse(txtCantidadPagada.Text) - decimal.Parse(lbTotal.Text.Replace("$", "").Replace(",", ""))).ToString();
+                Cambio();
             }
         }
 
@@ -344,93 +347,286 @@ namespace Ferreteria.Forms
         {
             btnCobrar.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnCobrar.Width, btnCobrar.Height, 20, 20));
             btnCancelar.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnCobrar.Width, btnCobrar.Height, 20, 20));
-        
+
+        }
+
+
+        #endregion
+
+
+        private void btnCobrar_Click(object sender, EventArgs e)
+        {
+            if (validarVenta())
+            {
+                ComenzarGuardar();
+            }
+        }
+
+        public void ComenzarGuardar()
+        {
+            // Crear formulario personalizado para pedir cantidad
+            Form inputForm = new Form()
+            {
+                Width = 350,
+                Height = 200,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                Text = "Ingrese los datos de pago",
+                StartPosition = FormStartPosition.CenterParent,
+                MaximizeBox = false,
+                MinimizeBox = false
+            };
+
+            // Contenedor principal
+            Panel mainPanel = new Panel()
+            {
+                Dock = DockStyle.Fill,
+                Padding = new Padding(10)
+            };
+
+            // Control para la cantidad - MODIFICADO PARA INICIAR VACÍO
+            NumericUpDown numericUpDown = new NumericUpDown()
+            {
+                Maximum = 1000000,
+                DecimalPlaces = 2,
+                Dock = DockStyle.Top,
+                Font = new Font("Segoe UI", 12),
+                Margin = new Padding(0, 0, 0, 10),
+                Value = 0.00m,    // Inicia en 0.00
+                Text = ""         // Texto vacío
+            };
+
+            // Configurar para que muestre vacío al inicio
+            numericUpDown.Enter += (sender, e) =>
+            {
+                if (numericUpDown.Value == 0)
+                {
+                    numericUpDown.Text = "";
+                }
+            };
+
+            // Validar cuando pierde el foco
+            numericUpDown.Leave += (sender, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(numericUpDown.Text))
+                {
+                    numericUpDown.Value = 0.00m;
+                }
+            };
+
+            // Grupo para los tipos de pago
+            GroupBox paymentGroup = new GroupBox()
+            {
+                Text = "Método de pago",
+                Dock = DockStyle.Top,
+                Height = 80,
+                Margin = new Padding(0, 0, 0, 10)
+            };
+
+            RadioButton rbEfectivo = new RadioButton()
+            {
+                Text = "Efectivo",
+                Checked = true,
+                Dock = DockStyle.Top,
+                Font = new Font("Segoe UI", 10)
+            };
+
+            RadioButton rbTarjeta = new RadioButton()
+            {
+                Text = "Tarjeta",
+                Dock = DockStyle.Top,
+                Font = new Font("Segoe UI", 10)
+            };
+
+            // Botón Aceptar
+            Button okButton = new Button()
+            {
+                Text = "Aceptar",
+                DialogResult = DialogResult.OK,
+                Dock = DockStyle.Bottom,
+                Height = 40,
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                BackColor = Color.FromArgb(46, 204, 113),
+                ForeColor = Color.White
+            };
+
+            // Agregar controles
+            paymentGroup.Controls.Add(rbTarjeta);
+            paymentGroup.Controls.Add(rbEfectivo);
+
+            mainPanel.Controls.Add(okButton);
+            mainPanel.Controls.Add(paymentGroup);
+            mainPanel.Controls.Add(numericUpDown);
+
+            inputForm.Controls.Add(mainPanel);
+            inputForm.AcceptButton = okButton;
+
+            // ESTABLECER EL FOCO EN EL CAMPO NUMÉRICO AL MOSTRAR EL FORMULARIO
+            inputForm.Shown += (sender, e) =>
+            {
+                numericUpDown.Select();
+                numericUpDown.Select(0, numericUpDown.Text.Length);
+            };
+
+            // Validación al aceptar
+            okButton.Click += (sender, e) =>
+            {
+                if (decimal.Parse(numericUpDown.Value.ToString()) < decimal.Parse(txtTotal.Text.Replace("$", "")))
+                {
+                    MessageBox.Show("Ingrese una cantidad válida", "Error",
+                                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    numericUpDown.Focus();
+                    inputForm.DialogResult = DialogResult.None;
+                }
+            };
+            if (inputForm.ShowDialog() == DialogResult.OK)
+            {
+                decimal cantidad = numericUpDown.Value;
+                bool esEfectivo = rbEfectivo.Checked;
+                // Usar la cantidad ingresada
+                txtCantidadPagada.Text = cantidad.ToString();
+                Cambio();
+                guardarVenta();
+            }
         }
 
         private void txtProducto_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             if (e.KeyCode == Keys.F5)
             {
-                MessageBox.Show("Se presionó F5 - Mostrar ayuda", "Tecla Detectada",
-                               MessageBoxButtons.OK, MessageBoxIcon.Information);
                 // Tu código aquí
                 e.IsInputKey = true; // Indicar que queremos manejar esta tecla
+                if (validarVenta())
+                {
+                    ComenzarGuardar();
+                }
             }
         }
 
-        private void EstilizarDataGridViewPOS()
+        #region Guardar Venta
+        public bool guardarVenta()
         {
-            // Configuración básica
-            dgProductos.BorderStyle = BorderStyle.None;
-            dgProductos.BackgroundColor = Color.FromArgb(45, 45, 48); // Fondo oscuro elegante
-            dgProductos.GridColor = Color.FromArgb(64, 64, 64);
-
-            // Fuente y color de texto
-            dgProductos.DefaultCellStyle.Font = new Font("Segoe UI", 11);
-            dgProductos.DefaultCellStyle.ForeColor = Color.WhiteSmoke;
-            dgProductos.DefaultCellStyle.BackColor = Color.FromArgb(45, 45, 48);
-            dgProductos.DefaultCellStyle.SelectionForeColor = Color.White;
-            dgProductos.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 122, 204); // Azul de selección
-
-            // Estilo de encabezados de columnas
-            dgProductos.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-            dgProductos.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(37, 37, 38);
-            dgProductos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgProductos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dgProductos.EnableHeadersVisualStyles = false;
-            dgProductos.ColumnHeadersHeight = 40;
-
-            // Estilo de filas alternas
-            dgProductos.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(60, 60, 60);
-
-            // Configuración de selección
-            dgProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgProductos.MultiSelect = false;
-            dgProductos.RowHeadersVisible = false; // Ocultar los headers de filas
-
-            // Ajustes de renderizado
-            dgProductos.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgProductos.RowTemplate.Height = 35;
-
-            // Efecto hover
-            dgProductos.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
-
-            // Configurar columnas específicas (ejemplo)
-            if (dgProductos.Columns.Count > 0)
+            if (RecopilarDatosVentaEncabezado())
             {
-                // Columna de Precio (derecha-alineada)
-                if (dgProductos.Columns.Contains("colPrecio"))
+                if (RecopilarDatosVentaDetalle(ConvertGridToTable(dgProductos)))
                 {
-                    dgProductos.Columns["colPrecio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgProductos.Columns["colPrecio"].DefaultCellStyle.Format = "C2"; // Formato de moneda
-                    dgProductos.Columns["colPrecio"].DefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
-                    dgProductos.Columns["colPrecio"].DefaultCellStyle.ForeColor = Color.FromArgb(0, 200, 83); // Verde para precios
+                    MessageBox.Show("Venta generada con éxito \n Su cambio es: " + lbCambio.Text, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Limpiar();
+                    txtProducto.Focus();
+                    return true;
                 }
-
-                // Columna de Cantidad (centrada)
-                if (dgProductos.Columns.Contains("Cantidad"))
+                else
                 {
-                    dgProductos.Columns["colCantidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    MessageBox.Show("Error al generar la venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
-
-                // Columna de Importe (resaltada)
-                if (dgProductos.Columns.Contains("colTotal"))
-                {
-                    dgProductos.Columns["colTotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgProductos.Columns["colTotal"].DefaultCellStyle.Format = "C2";
-                    dgProductos.Columns["colTotal"].DefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
-                    dgProductos.Columns["colTotal"].DefaultCellStyle.ForeColor = Color.FromArgb(255, 171, 25); // Amarillo/naranja
-                    dgProductos.Columns["colTotal"].DefaultCellStyle.BackColor = Color.FromArgb(50, 50, 50);
-                }
+                   
             }
-
-            // Ajustar automáticamente el tamaño de las columnas
-            dgProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            // Deshabilitar edición directa
-            dgProductos.ReadOnly = true;
+            else
+            {
+                return false;
+            }
         }
 
+       
+
+        public bool validarVenta()
+        {
+            if (dgProductos.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay productos en la venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (txtTotal.Text == "$0.00")
+            {
+                MessageBox.Show("No hay productos en la venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public bool RecopilarDatosVentaEncabezado()
+        {
+            // Crear un diccionario para los parámetros
+            var parametros = new Dictionary<string, object>
+            {
+                { "@Total", decimal.Parse(txtTotal.Text.Replace("$", "").Replace(",", "")) },
+                { "@EmisorId", 1 },
+                { "@ReceptorId", idCliente },
+                { "@UsuarioId", IdUsuario },
+                { "@SucursalId", 1 },
+                { "@Comentario", txtComentario.Text }
+            };
+            // Ejecutar el procedimiento almacenado
+            DataTable resultado = util.EjecutarSp("sp_InsertarVentaEncabezado", parametros);
+            if(ValidarSpProducto(resultado))
+            {
+                idVenta = int.Parse(resultado.Rows[0][1].ToString());
+                return true;
+            }
+            else
+            {
+                return false;
+            }            
+        }
+
+        public bool ValidarSpProducto(DataTable resultado)
+        {
+            if (resultado.Rows[0][0].ToString() == "1")
+            {
+                return true;
+            }
+            else
+            {
+
+                MessageBox.Show("Error al guardar el producto. \n " + resultado.Rows[0][1].ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool RecopilarDatosVentaDetalle(DataTable dataTable)
+        {
+            bool proceso = false; ; 
+            foreach(DataRow row in dataTable.Rows){
+                var parametros = new Dictionary<string, object>
+            {
+                { "@VentaId", idVenta },
+                { "@ProductoId", row.Field<int>("colId") },
+                { "@Cantidad",int.Parse(row["colCantidad"].ToString()) },
+                { "@PrecioUnitario", row.Field<decimal>("colCostoUnitario") },
+                { "@Importe", row.Field<decimal>("coltotal") }
+            };
+                // Ejecutar el procedimiento almacenado
+                DataTable resultado = util.EjecutarSp("sp_InsertarVentaDetalle", parametros);
+                if (ValidarSpProducto(resultado))
+                {
+                    proceso =  true;
+                }
+                else
+                {
+                    proceso = false;
+                }
+            }
+            return proceso;
+        }
+
+        public void Limpiar()
+        {
+            dgProductos.Rows.Clear();
+            lbTotal.Text = "$0.00";
+            lbCambio.Text = "$0.00";
+            txtCantidad.Text = "1";
+            txtCantidadPagada.Text = "0";
+            txtComentario.Text = "";
+            txtSubtotal.Text = "$0.00";
+            txtTotal.Text = "$0.00";
+            txtRFC.Text = "XAXX010101000";
+            BuscarCliente();
+            pbImgProducto.BackgroundImage = Properties.Resources.LogoRecortado;
+        }
+
+        
 
         #endregion
     }

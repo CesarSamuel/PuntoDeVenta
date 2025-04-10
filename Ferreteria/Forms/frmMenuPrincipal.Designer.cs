@@ -110,7 +110,7 @@
             treeNode13.Name = "sndPuntoVenta";
             treeNode13.Text = "Punto de Venta";
             treeNode14.ImageIndex = 9;
-            treeNode14.Name = "nsdListaVenta";
+            treeNode14.Name = "sndListaVenta";
             treeNode14.Text = "Lista de Ventas";
             treeNode15.ImageIndex = 8;
             treeNode15.Name = "ndVentas";

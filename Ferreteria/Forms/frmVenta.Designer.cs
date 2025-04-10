@@ -40,14 +40,17 @@
             this.colFotografia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.pbImgProducto = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.lbCambio = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lbTotal = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnCobrar = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtComentario = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
@@ -58,6 +61,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtSubtotal = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.txtUsoCFDI = new System.Windows.Forms.TextBox();
@@ -65,29 +69,26 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
+            this.btnConsultarRFC = new System.Windows.Forms.Button();
             this.txtRFC = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtProducto = new System.Windows.Forms.TextBox();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.pbImgProducto = new System.Windows.Forms.PictureBox();
-            this.btnCobrar = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnConsultarRFC = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductos)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImgProducto)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImgProducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -120,7 +121,8 @@
             this.colCantidad,
             this.colTotal,
             this.colFotografia,
-            this.colDesc});
+            this.colDesc,
+            this.colId});
             this.dgProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgProductos.Location = new System.Drawing.Point(3, 88);
             this.dgProductos.Name = "dgProductos";
@@ -198,6 +200,17 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1018, 183);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
+            // pbImgProducto
+            // 
+            this.pbImgProducto.BackgroundImage = global::Ferreteria.Properties.Resources.LogoRecortado;
+            this.pbImgProducto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbImgProducto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbImgProducto.Location = new System.Drawing.Point(800, 3);
+            this.pbImgProducto.Name = "pbImgProducto";
+            this.pbImgProducto.Size = new System.Drawing.Size(215, 177);
+            this.pbImgProducto.TabIndex = 0;
+            this.pbImgProducto.TabStop = false;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label3);
@@ -256,13 +269,48 @@
             this.panel2.Controls.Add(this.btnCancelar);
             this.panel2.Controls.Add(this.btnCobrar);
             this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.textBox9);
+            this.panel2.Controls.Add(this.txtComentario);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(560, 177);
             this.panel2.TabIndex = 1;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(87)))), ((int)(((byte)(51)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Location = new System.Drawing.Point(15, 104);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(150, 50);
+            this.btnCancelar.TabIndex = 10;
+            this.btnCancelar.Text = "CANCELAR";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            // 
+            // btnCobrar
+            // 
+            this.btnCobrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnCobrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCobrar.FlatAppearance.BorderSize = 0;
+            this.btnCobrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.btnCobrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(83)))));
+            this.btnCobrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCobrar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCobrar.ForeColor = System.Drawing.Color.White;
+            this.btnCobrar.Location = new System.Drawing.Point(168, 104);
+            this.btnCobrar.Name = "btnCobrar";
+            this.btnCobrar.Size = new System.Drawing.Size(150, 50);
+            this.btnCobrar.TabIndex = 9;
+            this.btnCobrar.Text = "COBRAR";
+            this.btnCobrar.UseVisualStyleBackColor = false;
+            this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
             // 
             // label13
             // 
@@ -273,13 +321,13 @@
             this.label13.TabIndex = 8;
             this.label13.Text = "Comentarios:";
             // 
-            // textBox9
+            // txtComentario
             // 
-            this.textBox9.Location = new System.Drawing.Point(15, 34);
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(303, 64);
-            this.textBox9.TabIndex = 1;
+            this.txtComentario.Location = new System.Drawing.Point(15, 34);
+            this.txtComentario.Multiline = true;
+            this.txtComentario.Name = "txtComentario";
+            this.txtComentario.Size = new System.Drawing.Size(303, 64);
+            this.txtComentario.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -387,6 +435,17 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1018, 79);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::Ferreteria.Properties.Resources.LogoRecortado;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(897, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(118, 73);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.label15);
@@ -464,6 +523,16 @@
             this.txtCantidad.Text = "1";
             this.txtCantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::Ferreteria.Properties.Resources.Buscador;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Location = new System.Drawing.Point(316, 40);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(32, 21);
+            this.button2.TabIndex = 8;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // txtNombreCliente
             // 
             this.txtNombreCliente.Enabled = false;
@@ -471,6 +540,17 @@
             this.txtNombreCliente.Name = "txtNombreCliente";
             this.txtNombreCliente.Size = new System.Drawing.Size(451, 20);
             this.txtNombreCliente.TabIndex = 7;
+            // 
+            // btnConsultarRFC
+            // 
+            this.btnConsultarRFC.BackgroundImage = global::Ferreteria.Properties.Resources.Buscador;
+            this.btnConsultarRFC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnConsultarRFC.Location = new System.Drawing.Point(396, 13);
+            this.btnConsultarRFC.Name = "btnConsultarRFC";
+            this.btnConsultarRFC.Size = new System.Drawing.Size(32, 21);
+            this.btnConsultarRFC.TabIndex = 6;
+            this.btnConsultarRFC.UseVisualStyleBackColor = true;
+            this.btnConsultarRFC.Click += new System.EventHandler(this.btnConsultarRFC_Click);
             // 
             // txtRFC
             // 
@@ -526,82 +606,12 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Fecha:";
             // 
-            // pbImgProducto
+            // colId
             // 
-            this.pbImgProducto.BackgroundImage = global::Ferreteria.Properties.Resources.LogoRecortado;
-            this.pbImgProducto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbImgProducto.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbImgProducto.Location = new System.Drawing.Point(800, 3);
-            this.pbImgProducto.Name = "pbImgProducto";
-            this.pbImgProducto.Size = new System.Drawing.Size(215, 177);
-            this.pbImgProducto.TabIndex = 0;
-            this.pbImgProducto.TabStop = false;
-            // 
-            // btnCobrar
-            // 
-            this.btnCobrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.btnCobrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCobrar.FlatAppearance.BorderSize = 0;
-            this.btnCobrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this.btnCobrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(83)))));
-            this.btnCobrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCobrar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCobrar.ForeColor = System.Drawing.Color.White;
-            this.btnCobrar.Location = new System.Drawing.Point(168, 104);
-            this.btnCobrar.Name = "btnCobrar";
-            this.btnCobrar.Size = new System.Drawing.Size(150, 50);
-            this.btnCobrar.TabIndex = 9;
-            this.btnCobrar.Text = "COBRAR";
-            this.btnCobrar.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::Ferreteria.Properties.Resources.LogoRecortado;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(897, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(118, 73);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImage = global::Ferreteria.Properties.Resources.Buscador;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(316, 40);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(32, 21);
-            this.button2.TabIndex = 8;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // btnConsultarRFC
-            // 
-            this.btnConsultarRFC.BackgroundImage = global::Ferreteria.Properties.Resources.Buscador;
-            this.btnConsultarRFC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnConsultarRFC.Location = new System.Drawing.Point(396, 13);
-            this.btnConsultarRFC.Name = "btnConsultarRFC";
-            this.btnConsultarRFC.Size = new System.Drawing.Size(32, 21);
-            this.btnConsultarRFC.TabIndex = 6;
-            this.btnConsultarRFC.UseVisualStyleBackColor = true;
-            this.btnConsultarRFC.Click += new System.EventHandler(this.btnConsultarRFC_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(57)))), ((int)(((byte)(57)))));
-            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(87)))), ((int)(((byte)(51)))));
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(15, 104);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(150, 50);
-            this.btnCancelar.TabIndex = 10;
-            this.btnCancelar.Text = "CANCELAR";
-            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
             // 
             // frmVenta
             // 
@@ -619,6 +629,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgProductos)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbImgProducto)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -626,10 +637,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImgProducto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -670,7 +680,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtSubtotal;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtComentario;
         private System.Windows.Forms.TextBox txtCantidadPagada;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
@@ -685,5 +695,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDesc;
         private System.Windows.Forms.Button btnCobrar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
     }
 }
