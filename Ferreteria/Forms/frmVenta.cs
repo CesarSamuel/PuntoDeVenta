@@ -16,13 +16,12 @@ namespace Ferreteria.Forms
     public partial class frmVenta : Form
     {
         #region Variables Globales
-        public int IdUsuario, idVenta;
+        public int IdUsuario, idVenta, idCliente;
         public decimal IVA;
         public bool descuentos, facturacion;
         utilidades util = new utilidades();
         Imagenes imgz = new Imagenes();
         Estilos estilos = new Estilos();
-        public int idCliente;
         #endregion
 
         public frmVenta(int idUsuario)
@@ -267,9 +266,13 @@ namespace Ferreteria.Forms
 
         private void dgProductos_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgProductos.SelectedRows.Count > 0)
+            if (dgProductos.SelectedCells.Count > 0)
             {
-                DataGridViewRow filaSeleccionada = dgProductos.SelectedRows[0];
+                // Obtener la primera celda seleccionada (si hay múltiples selecciones)
+                DataGridViewCell celdaSeleccionada = dgProductos.SelectedCells[0];
+
+                // Obtener la fila que contiene esa celda
+                DataGridViewRow filaSeleccionada = celdaSeleccionada.OwningRow;
                 byte[] arreglo = filaSeleccionada.Cells["colFotografia"].Value as byte[];
 
 
@@ -582,6 +585,14 @@ namespace Ferreteria.Forms
 
                 MessageBox.Show("Error al guardar el producto. \n " + resultado.Rows[0][1].ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+
+        private void txtRFC_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BuscarCliente();
             }
         }
 

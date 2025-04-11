@@ -218,6 +218,12 @@
     <Compile Include="Forms\frmListaProductos.Designer.cs">
       <DependentUpon>frmListaProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmListaReceptores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmListaReceptores.Designer.cs">
+      <DependentUpon>frmListaReceptores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmListaUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,6 +251,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades\Estilos.cs" />
+    <Compile Include="Utilidades\Filtros.cs" />
     <Compile Include="Utilidades\Imagenes.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -257,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmListaProductos.resx">
       <DependentUpon>frmListaProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmListaReceptores.resx">
+      <DependentUpon>frmListaReceptores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmListaUsuarios.resx">
       <DependentUpon>frmListaUsuarios.cs</DependentUpon>

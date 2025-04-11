@@ -33,6 +33,7 @@ namespace Ferreteria.Forms
             _formularios.Add("sndListaProductos", () => new frmListaProductos(IdUsuario));
             _formularios.Add("sndListaVenta", () => new frmListaVentas());
             _formularios.Add("sndPuntoVenta", () => new frmVenta(IdUsuario));
+            _formularios.Add("sndListaReceptores", () => new frmListaReceptores());
             // Agregar más formularios según sea necesario
         }
 
@@ -93,6 +94,7 @@ namespace Ferreteria.Forms
                 case "sndListaUsuarios":
                 case "sndListaProductos":
                 case "sndListaVenta":
+                case "sndListaReceptores":
                 case "sndPuntoVenta":
                     AbrirFormularioSegunNodo(valorNodo, VentanaNueva);
                     break;
@@ -220,7 +222,7 @@ namespace Ferreteria.Forms
 
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
         {
-            ValidarNodos();
+            //ValidarNodos();
             lbUsuario.Text = Usuario;
             InicializarDiccionarioFormularios();
         }

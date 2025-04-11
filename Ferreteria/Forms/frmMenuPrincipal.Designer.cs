@@ -47,14 +47,16 @@
             treeNode8});
             System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Agregar Receptor");
             System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Agregar Emisor");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Clientes", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Lista Receptores");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Clientes", new System.Windows.Forms.TreeNode[] {
             treeNode10,
-            treeNode11});
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Punto de Venta");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Lista de Ventas");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Ventas", new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode14});
+            treeNode11,
+            treeNode12});
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Punto de Venta");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Lista de Ventas");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Ventas", new System.Windows.Forms.TreeNode[] {
+            treeNode14,
+            treeNode15});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
             this.tvBotnesMenu = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -103,23 +105,25 @@
             treeNode10.Text = "Agregar Receptor";
             treeNode11.Name = "sndAddEmisor";
             treeNode11.Text = "Agregar Emisor";
-            treeNode12.ImageIndex = 2;
-            treeNode12.Name = "ndClientes";
-            treeNode12.Text = "Clientes";
-            treeNode13.ImageIndex = 10;
-            treeNode13.Name = "sndPuntoVenta";
-            treeNode13.Text = "Punto de Venta";
-            treeNode14.ImageIndex = 9;
-            treeNode14.Name = "sndListaVenta";
-            treeNode14.Text = "Lista de Ventas";
-            treeNode15.ImageIndex = 8;
-            treeNode15.Name = "ndVentas";
-            treeNode15.Text = "Ventas";
+            treeNode12.Name = "sndListaReceptores";
+            treeNode12.Text = "Lista Receptores";
+            treeNode13.ImageIndex = 2;
+            treeNode13.Name = "ndClientes";
+            treeNode13.Text = "Clientes";
+            treeNode14.ImageIndex = 10;
+            treeNode14.Name = "sndPuntoVenta";
+            treeNode14.Text = "Punto de Venta";
+            treeNode15.ImageIndex = 9;
+            treeNode15.Name = "sndListaVenta";
+            treeNode15.Text = "Lista de Ventas";
+            treeNode16.ImageIndex = 8;
+            treeNode16.Name = "ndVentas";
+            treeNode16.Text = "Ventas";
             this.tvBotnesMenu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode4,
             treeNode9,
-            treeNode12,
-            treeNode15});
+            treeNode13,
+            treeNode16});
             this.tvBotnesMenu.SelectedImageIndex = 0;
             this.tvBotnesMenu.Size = new System.Drawing.Size(162, 680);
             this.tvBotnesMenu.TabIndex = 0;

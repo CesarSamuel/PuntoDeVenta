@@ -39,6 +39,7 @@
             this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFotografia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pbImgProducto = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -78,7 +79,6 @@
             this.txtProducto = new System.Windows.Forms.TextBox();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductos)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -181,6 +181,13 @@
             this.colDesc.HeaderText = "Descripción";
             this.colDesc.Name = "colDesc";
             this.colDesc.ReadOnly = true;
+            // 
+            // colId
+            // 
+            this.colId.HeaderText = "Id";
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Visible = false;
             // 
             // tableLayoutPanel2
             // 
@@ -560,6 +567,7 @@
             this.txtRFC.TabIndex = 5;
             this.txtRFC.Text = "XAXX010101000";
             this.txtRFC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtRFC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRFC_KeyDown);
             // 
             // label7
             // 
@@ -605,13 +613,6 @@
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 0;
             this.label5.Text = "Fecha:";
-            // 
-            // colId
-            // 
-            this.colId.HeaderText = "Id";
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Visible = false;
             // 
             // frmVenta
             // 

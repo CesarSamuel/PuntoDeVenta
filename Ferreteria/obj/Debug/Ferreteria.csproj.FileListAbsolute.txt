@@ -110,3 +110,4 @@ E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\bin\Debug\Magick.NET-
 E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\bin\Debug\Magick.NET.Core.xml
 E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\obj\Debug\Ferreteria.Forms.frmVenta.resources
 E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\obj\Debug\Ferreteria.Forms.frmListaVentas.resources
+E:\Proyectos\Ferreteria Erick\Codigo\Ferreteria\Ferreteria\obj\Debug\Ferreteria.Forms.frmListaReceptores.resources
