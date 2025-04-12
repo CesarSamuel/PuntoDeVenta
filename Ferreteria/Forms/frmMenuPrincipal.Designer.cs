@@ -29,34 +29,37 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Agregar Usuario");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Borrar Usuario");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Lista de usuarios");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Usuarios", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Agregar Producto");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Agregar Dept.");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Agregar Sucursal");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Lista productos");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Almacen", new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode6,
-            treeNode7,
-            treeNode8});
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Agregar Receptor");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Agregar Emisor");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Lista Receptores");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Clientes", new System.Windows.Forms.TreeNode[] {
-            treeNode10,
-            treeNode11,
-            treeNode12});
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Punto de Venta");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Lista de Ventas");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Ventas", new System.Windows.Forms.TreeNode[] {
-            treeNode14,
-            treeNode15});
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Agregar Usuario");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Borrar Usuario");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Lista de usuarios");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Usuarios", new System.Windows.Forms.TreeNode[] {
+            treeNode19,
+            treeNode20,
+            treeNode21});
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Agregar Producto");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Agregar Dept.");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Agregar Sucursal");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Lista productos");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Almacen", new System.Windows.Forms.TreeNode[] {
+            treeNode23,
+            treeNode24,
+            treeNode25,
+            treeNode26});
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Agregar Receptor");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Agregar Emisor");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Lista Receptores");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Clientes", new System.Windows.Forms.TreeNode[] {
+            treeNode28,
+            treeNode29,
+            treeNode30});
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Punto de Venta");
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Lista de Ventas");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Ventas", new System.Windows.Forms.TreeNode[] {
+            treeNode32,
+            treeNode33});
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Caja");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Administración", new System.Windows.Forms.TreeNode[] {
+            treeNode35});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
             this.tvBotnesMenu = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -79,51 +82,58 @@
             this.tvBotnesMenu.ImageList = this.imageList1;
             this.tvBotnesMenu.Location = new System.Drawing.Point(3, 3);
             this.tvBotnesMenu.Name = "tvBotnesMenu";
-            treeNode1.ImageIndex = 3;
-            treeNode1.Name = "sndAddUser";
-            treeNode1.Text = "Agregar Usuario";
-            treeNode2.ImageIndex = 4;
-            treeNode2.Name = "sndDelUser";
-            treeNode2.Text = "Borrar Usuario";
-            treeNode3.Name = "sndListaUsuarios";
-            treeNode3.Text = "Lista de usuarios";
-            treeNode4.Name = "ndUsuarios";
-            treeNode4.Text = "Usuarios";
-            treeNode5.Name = "sndAddProducto";
-            treeNode5.Text = "Agregar Producto";
-            treeNode6.Name = "sndAddDepartamento";
-            treeNode6.Text = "Agregar Dept.";
-            treeNode7.Name = "sndAddSucursal";
-            treeNode7.Text = "Agregar Sucursal";
-            treeNode8.ImageIndex = 4;
-            treeNode8.Name = "sndListaProductos";
-            treeNode8.Text = "Lista productos";
-            treeNode9.ImageIndex = 1;
-            treeNode9.Name = "ndAlmacen";
-            treeNode9.Text = "Almacen";
-            treeNode10.Name = "sndAddReceptor";
-            treeNode10.Text = "Agregar Receptor";
-            treeNode11.Name = "sndAddEmisor";
-            treeNode11.Text = "Agregar Emisor";
-            treeNode12.Name = "sndListaReceptores";
-            treeNode12.Text = "Lista Receptores";
-            treeNode13.ImageIndex = 2;
-            treeNode13.Name = "ndClientes";
-            treeNode13.Text = "Clientes";
-            treeNode14.ImageIndex = 10;
-            treeNode14.Name = "sndPuntoVenta";
-            treeNode14.Text = "Punto de Venta";
-            treeNode15.ImageIndex = 9;
-            treeNode15.Name = "sndListaVenta";
-            treeNode15.Text = "Lista de Ventas";
-            treeNode16.ImageIndex = 8;
-            treeNode16.Name = "ndVentas";
-            treeNode16.Text = "Ventas";
+            treeNode19.ImageIndex = 3;
+            treeNode19.Name = "sndAddUser";
+            treeNode19.Text = "Agregar Usuario";
+            treeNode20.ImageIndex = 4;
+            treeNode20.Name = "sndDelUser";
+            treeNode20.Text = "Borrar Usuario";
+            treeNode21.Name = "sndListaUsuarios";
+            treeNode21.Text = "Lista de usuarios";
+            treeNode22.Name = "ndUsuarios";
+            treeNode22.Text = "Usuarios";
+            treeNode23.Name = "sndAddProducto";
+            treeNode23.Text = "Agregar Producto";
+            treeNode24.Name = "sndAddDepartamento";
+            treeNode24.Text = "Agregar Dept.";
+            treeNode25.Name = "sndAddSucursal";
+            treeNode25.Text = "Agregar Sucursal";
+            treeNode26.ImageIndex = 4;
+            treeNode26.Name = "sndListaProductos";
+            treeNode26.Text = "Lista productos";
+            treeNode27.ImageIndex = 1;
+            treeNode27.Name = "ndAlmacen";
+            treeNode27.Text = "Almacen";
+            treeNode28.Name = "sndAddReceptor";
+            treeNode28.Text = "Agregar Receptor";
+            treeNode29.Name = "sndAddEmisor";
+            treeNode29.Text = "Agregar Emisor";
+            treeNode30.Name = "sndListaReceptores";
+            treeNode30.Text = "Lista Receptores";
+            treeNode31.ImageIndex = 2;
+            treeNode31.Name = "ndClientes";
+            treeNode31.Text = "Clientes";
+            treeNode32.ImageIndex = 10;
+            treeNode32.Name = "sndPuntoVenta";
+            treeNode32.Text = "Punto de Venta";
+            treeNode33.ImageIndex = 9;
+            treeNode33.Name = "sndListaVenta";
+            treeNode33.Text = "Lista de Ventas";
+            treeNode34.ImageIndex = 8;
+            treeNode34.Name = "ndVentas";
+            treeNode34.Text = "Ventas";
+            treeNode35.ImageIndex = 12;
+            treeNode35.Name = "sndCaja";
+            treeNode35.Text = "Caja";
+            treeNode36.ImageIndex = 11;
+            treeNode36.Name = "ndAdminitrativo";
+            treeNode36.Text = "Administración";
             this.tvBotnesMenu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode9,
-            treeNode13,
-            treeNode16});
+            treeNode22,
+            treeNode27,
+            treeNode31,
+            treeNode34,
+            treeNode36});
             this.tvBotnesMenu.SelectedImageIndex = 0;
             this.tvBotnesMenu.Size = new System.Drawing.Size(162, 680);
             this.tvBotnesMenu.TabIndex = 0;
@@ -144,6 +154,8 @@
             this.imageList1.Images.SetKeyName(8, "ventas.png");
             this.imageList1.Images.SetKeyName(9, "ListaVentas.png");
             this.imageList1.Images.SetKeyName(10, "puntodeventa.png");
+            this.imageList1.Images.SetKeyName(11, "Administrativo.png");
+            this.imageList1.Images.SetKeyName(12, "caja.png");
             // 
             // tableLayoutPanel1
             // 
@@ -184,7 +196,7 @@
             // 
             // btnCerrarSesion
             // 
-            this.btnCerrarSesion.Location = new System.Drawing.Point(42, 3);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 4);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(87, 23);
             this.btnCerrarSesion.TabIndex = 2;

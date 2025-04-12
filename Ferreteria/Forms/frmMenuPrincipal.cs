@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ferreteria.Conexion;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace Ferreteria.Forms
     {
         public string tipoUser, Usuario;
         public int IdUsuario;
+        utilidades util = new utilidades();
         //diccionario de formularios para abrirlos según el nodo seleccionado
         private readonly Dictionary<string, Func<Form>> _formularios = new Dictionary<string, Func<Form>>();
         // Diccionario para guardar nodos ocultos y sus padres
@@ -34,7 +36,85 @@ namespace Ferreteria.Forms
             _formularios.Add("sndListaVenta", () => new frmListaVentas());
             _formularios.Add("sndPuntoVenta", () => new frmVenta(IdUsuario));
             _formularios.Add("sndListaReceptores", () => new frmListaReceptores());
+            _formularios.Add("sndCaja", () => new frmCaja(1,IdUsuario));
+
             // Agregar más formularios según sea necesario
+        }
+
+        private void ClicBotonNodo(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            // e.Node contiene el nodo que recibió el doble clic
+            TreeNode nodoSeleccionado = e.Node;
+            bool VentanaNueva = false;
+            // Verificar si Control está presionado
+            if (Control.ModifierKeys == Keys.Control) { VentanaNueva = true; }
+
+            // Puedes acceder a sus propiedades
+            string valorNodo = nodoSeleccionado.Name; // Si asignaste un nombre
+
+            // Uso simplificado del switch original
+            switch (valorNodo)
+            {
+                case "sndAddUser":
+                case "sndAddProducto":
+                case "sndListaUsuarios":
+                case "sndListaProductos":
+                case "sndListaVenta":
+                case "sndListaReceptores":
+                case "sndCaja":
+                    AbrirFormularioSegunNodo(valorNodo, VentanaNueva);
+                    break;
+                case "sndPuntoVenta":
+                    if (ValidarCaja())
+                    {
+                        AbrirFormularioSegunNodo(valorNodo, VentanaNueva);
+                    }
+                    else
+                    {
+                        if (AbrirCaja())
+                        {
+                            AbrirFormularioSegunNodo(valorNodo, VentanaNueva);
+                        }
+                    }
+                break;
+            }
+        }
+
+        private bool ValidarCaja()
+        {
+            DataTable resultado = util.EjecutarSp("sp_ValidarCaja");
+            if (resultado.Rows[0]["ESTADO"].ToString() == "Abierta")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+
+        public bool AbrirCaja()
+        {
+            if ((tipoUser == "Administrador") || (tipoUser == "Root"))
+            {
+                frmCaja Caja = new frmCaja(1, IdUsuario);
+                Caja.ShowDialog();
+                if (ValidarCaja())
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo abrir la caja, favor de verificar", "Error al abrir caja", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("No tienes permisos para abrir la caja\n Por favor solicita a un Administrador Abrir Caja", "Caja Cerrada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
         public frmMenuPrincipal(string tipoUser, string Usuario, int idUsuario)
@@ -75,31 +155,6 @@ namespace Ferreteria.Forms
         }
 
 
-        private void ClicBotonNodo(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            // e.Node contiene el nodo que recibió el doble clic
-            TreeNode nodoSeleccionado = e.Node;
-            bool VentanaNueva = false; 
-            // Verificar si Control está presionado
-            if (Control.ModifierKeys == Keys.Control){VentanaNueva = true;}
-
-            // Puedes acceder a sus propiedades
-            string valorNodo = nodoSeleccionado.Name; // Si asignaste un nombre
-
-            // Uso simplificado del switch original
-            switch (valorNodo)
-            {
-                case "sndAddUser":
-                case "sndAddProducto":
-                case "sndListaUsuarios":
-                case "sndListaProductos":
-                case "sndListaVenta":
-                case "sndListaReceptores":
-                case "sndPuntoVenta":
-                    AbrirFormularioSegunNodo(valorNodo, VentanaNueva);
-                    break;
-            }
-        }
 
         // Método unificado para abrir formularios
         private void AbrirFormularioSegunNodo(string valorNodo, bool VentanaNueva)
@@ -222,14 +277,17 @@ namespace Ferreteria.Forms
 
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
         {
-            //ValidarNodos();
+            ValidarNodos();
             lbUsuario.Text = Usuario;
             InicializarDiccionarioFormularios();
         }
 
         public void ValidarNodos()
         {
-            OcultarNodoPorNombre("Clientes");
+            if((tipoUser != "Administrador") && (tipoUser != "Root"))
+            {
+                OcultarNodoPorNombre("Administración");
+            }
         }
 
 

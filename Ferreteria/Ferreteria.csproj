@@ -212,6 +212,12 @@
     <Compile Include="Forms\frmAddUser.Designer.cs">
       <DependentUpon>frmAddUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCaja.Designer.cs">
+      <DependentUpon>frmCaja.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmListaProductos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAddUser.resx">
       <DependentUpon>frmAddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCaja.resx">
+      <DependentUpon>frmCaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmListaProductos.resx">
       <DependentUpon>frmListaProductos.cs</DependentUpon>
