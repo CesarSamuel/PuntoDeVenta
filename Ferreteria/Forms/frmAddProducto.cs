@@ -21,7 +21,8 @@ namespace Ferreteria.Forms
         public int IdUsuario, IdProducto, idDepartamento, existencias, idSucursal;
         public string nombre, descCorta, descLarga, codigoBarras, rutaImagen;
         public decimal costoUnitario;
-        #endregion 
+        public byte[] imgBytes;
+        #endregion
 
         #region Constructor
         public frmAddProducto(int idUsuario, int idProducto = 0)
@@ -313,6 +314,7 @@ namespace Ferreteria.Forms
             idDepartamento = Convert.ToInt32(cboDepartamento.SelectedValue);
             existencias = Convert.ToInt32(txtExistencias.Text);
             rutaImagen = txtRutaImagen.Text;
+            imgBytes = File.ReadAllBytes(rutaImagen);
             idSucursal = Convert.ToInt32(cboSucursal.SelectedValue);
         }
         #endregion
@@ -382,7 +384,7 @@ namespace Ferreteria.Forms
                     { "@CostoUnitario", costoUnitario },
                     { "@Existencias", existencias },
                     { "@CodigoDeBarras", codigoBarras },
-                    { "@RutaImagen", rutaImagen },
+                    { "@Fotografia", imgBytes }, 
                     { "@UsuarioCreadorId", IdUsuario },
                     { "@DepartamentoId", idDepartamento },
                     { "@SucursalId", idSucursal }

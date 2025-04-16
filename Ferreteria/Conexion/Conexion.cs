@@ -4,17 +4,35 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using Microsoft.IdentityModel.Protocols;
+using System.IO;
+using Microsoft.Extensions.Configuration;
+using System.Text.Json;
 
 namespace Ferreteria.Conexion
 {
     public class Conexion
     {
-        public string connectionString;
+
+        public string connectionString { get; }
 
         public Conexion()
         {
-            // Obtener la cadena de conexión desde el archivo de configuración
-            connectionString = ConfigurationManager.ConnectionStrings["FerreteriaConnection"].ConnectionString;
+            // Leer el archivo JSON
+            string json = File.ReadAllText("appsettings.json");
+
+            // Deserializar el JSON
+            JsonDocument document = JsonDocument.Parse(json);
+            JsonElement root = document.RootElement;
+
+            // Obtener la cadena de conexión
+            connectionString = root.GetProperty("ConnectionStrings")
+                                 .GetProperty("FerreteriaConnection")
+                                 .GetString();
+
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                throw new InvalidOperationException("Cadena de conexión no encontrada o inválida");
+            }
         }
 
         // Método para ejecutar consultas que no retornan datos (INSERT, UPDATE, DELETE)

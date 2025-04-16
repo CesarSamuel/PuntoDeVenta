@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ferreteria.Conexion
 {
@@ -17,18 +14,27 @@ namespace Ferreteria.Conexion
         {
             DataTable resultado = new DataTable();
 
-            using (SqlConnection conexion = new SqlConnection(db.connectionString))
+            using ( SqlConnection conexion = new SqlConnection(db.connectionString))
             {
                 using (SqlCommand comando = new SqlCommand(nombreSP, conexion))
                 {
                     comando.CommandType = CommandType.StoredProcedure;
 
-                    // Agregar parámetros si existen
+                    // Agregar parámetros con manejo especial para byte[]
                     if (parametros != null)
                     {
                         foreach (var parametro in parametros)
                         {
-                            comando.Parameters.AddWithValue(parametro.Key, parametro.Value ?? DBNull.Value);
+                            if (parametro.Value is byte[] bytes)
+                            {
+                                var param = new SqlParameter(parametro.Key, SqlDbType.VarBinary, -1); // -1 = MAX
+                                param.Value = bytes;
+                                comando.Parameters.Add(param);
+                            }
+                            else
+                            {
+                                comando.Parameters.AddWithValue(parametro.Key, parametro.Value ?? DBNull.Value);
+                            }
                         }
                     }
 
@@ -36,13 +42,14 @@ namespace Ferreteria.Conexion
 
                     using (SqlDataReader reader = comando.ExecuteReader())
                     {
-                        resultado.Load(reader); // Cargar los datos directamente al DataTable
+                        resultado.Load(reader);
                     }
                 }
             }
 
             return resultado;
         }
+
         #endregion
 
     }
