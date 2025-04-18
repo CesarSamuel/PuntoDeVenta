@@ -3,64 +3,36 @@
   "WorkspaceRootPath": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|e:\\proyectos\\ferreteria erick\\codigo\\ferreteria\\ferreteria\\conexion\\utilidades.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\conexion\\utilidades.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|e:\\proyectos\\ferreteria erick\\codigo\\ferreteria\\ferreteria\\forms\\frmventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|e:\\proyectos\\ferreteria erick\\codigo\\ferreteria\\ferreteria\\forms\\frmaddproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmaddproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|e:\\proyectos\\ferreteria erick\\codigo\\ferreteria\\ferreteria\\forms\\frmaddproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmaddproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|e:\\proyectos\\ferreteria erick\\codigo\\ferreteria\\ferreteria\\conexion\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\conexion\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\ferreteria\\forms\\frmcaja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmcaja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\ferreteria\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|e:\\proyectos\\ferreteria erick\\codigo\\ferreteria\\ferreteria\\utilidades\\configuraciontienda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\utilidades\\configuraciontienda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\ferreteria\\forms\\frmventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\ferreteria\\forms\\frmventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmventa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|e:\\proyectos\\ferreteria erick\\codigo\\ferreteria\\ferreteria\\forms\\frmadduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmadduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\ferreteria\\forms\\frmcaja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmcaja.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\ferreteria\\forms\\frmlistaproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmlistaproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\ferreteria\\forms\\frmlistaproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmlistaproductos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|e:\\proyectos\\ferreteria erick\\codigo\\ferreteria\\ferreteria\\forms\\frmventa.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmventa.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\ferreteria\\forms\\frmlistaventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmlistaventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\ferreteria\\forms\\frmcaja.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmcaja.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\ferreteria\\forms\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\ferreteria\\forms\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\ferreteria\\forms\\frmlistaventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3559505C-3A00-4E1F-A9F6-B46711D54C5A}|Ferreteria\\Ferreteria.csproj|solutionrelative:ferreteria\\forms\\frmlistaventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,60 +42,63 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmVenta.cs",
+              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmVenta.cs",
+              "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmVenta.cs",
+              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmVenta.cs*",
+              "RelativeToolTip": "Ferreteria\\Forms\\frmVenta.cs*",
+              "ViewState": "AgIAAI0CAAAAAAAAAAAYwLQCAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T00:45:22.572Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "frmVenta.cs [Dise\u00F1o]",
+              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmVenta.cs",
+              "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmVenta.cs",
+              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmVenta.cs [Dise\u00F1o]*",
+              "RelativeToolTip": "Ferreteria\\Forms\\frmVenta.cs [Dise\u00F1o]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T17:15:55.593Z",
+              "IsPinned": true,
+              "EditorCaption": " [Dise\u00F1o]"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "frmVenta.cs",
-              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmVenta.cs",
-              "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmVenta.cs",
-              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmVenta.cs",
-              "RelativeToolTip": "Ferreteria\\Forms\\frmVenta.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAswIoAAAAMAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "ConfiguracionTienda.cs",
+              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Utilidades\\ConfiguracionTienda.cs",
+              "RelativeDocumentMoniker": "Ferreteria\\Utilidades\\ConfiguracionTienda.cs",
+              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Utilidades\\ConfiguracionTienda.cs",
+              "RelativeToolTip": "Ferreteria\\Utilidades\\ConfiguracionTienda.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwBkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T00:45:22.572Z",
-              "IsPinned": true
+              "WhenOpened": "2025-04-17T23:21:19.596Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "frmVenta.cs [Dise\u00F1o]",
-              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmVenta.cs",
-              "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmVenta.cs",
-              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmVenta.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Ferreteria\\Forms\\frmVenta.cs [Dise\u00F1o]",
+              "DocumentIndex": 5,
+              "Title": "frmVenta.Designer.cs",
+              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmVenta.Designer.cs",
+              "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmVenta.Designer.cs",
+              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmVenta.Designer.cs",
+              "RelativeToolTip": "Ferreteria\\Forms\\frmVenta.Designer.cs",
+              "ViewState": "AgIAAIYCAAAAAAAAAAAvwJICAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T17:15:55.593Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "frmCaja.cs [Dise\u00F1o]",
-              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmCaja.cs",
-              "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmCaja.cs",
-              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmCaja.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Ferreteria\\Forms\\frmCaja.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-11T21:22:31.91Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "utilidades.cs",
-              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Conexion\\utilidades.cs",
-              "RelativeDocumentMoniker": "Ferreteria\\Conexion\\utilidades.cs",
-              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Conexion\\utilidades.cs",
-              "RelativeToolTip": "Ferreteria\\Conexion\\utilidades.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAgwCoAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T02:23:51.843Z",
+              "WhenOpened": "2025-04-17T20:23:30.976Z",
               "EditorCaption": ""
             },
             {
@@ -134,130 +109,46 @@
               "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmAddProducto.cs",
               "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddProducto.cs",
               "RelativeToolTip": "Ferreteria\\Forms\\frmAddProducto.cs",
-              "ViewState": "AgIAAF8BAAAAAAAAAAAYwIoBAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAAYCAAAAAAAAAAA4wPIBAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T02:19:04.488Z",
+              "WhenOpened": "2025-04-17T20:09:28.661Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmAddProducto.cs [Dise\u00F1o]",
-              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddProducto.cs",
-              "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmAddProducto.cs",
-              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddProducto.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Ferreteria\\Forms\\frmAddProducto.cs [Dise\u00F1o]",
+              "DocumentIndex": 4,
+              "Title": "frmAddUser.cs",
+              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddUser.cs",
+              "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmAddUser.cs",
+              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmAddUser.cs",
+              "RelativeToolTip": "Ferreteria\\Forms\\frmAddUser.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAqwEAAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T02:19:02.005Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Conexion.cs",
-              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Conexion\\Conexion.cs",
-              "RelativeDocumentMoniker": "Ferreteria\\Conexion\\Conexion.cs",
-              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Conexion\\Conexion.cs",
-              "RelativeToolTip": "Ferreteria\\Conexion\\Conexion.cs",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAAABQAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T23:54:48.543Z",
+              "WhenOpened": "2025-04-17T18:10:08.364Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "App.config",
-              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\App.config",
-              "RelativeDocumentMoniker": "Ferreteria\\App.config",
-              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\App.config",
-              "RelativeToolTip": "Ferreteria\\App.config",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAIwDUAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-04-15T23:54:21.045Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "frmListaProductos.cs",
-              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmListaProductos.cs",
-              "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmListaProductos.cs",
-              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmListaProductos.cs",
-              "RelativeToolTip": "Ferreteria\\Forms\\frmListaProductos.cs",
-              "ViewState": "AgIAALMAAAAAAAAAAAAuwMsAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T02:21:28.132Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "frmListaProductos.cs [Dise\u00F1o]",
-              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmListaProductos.cs",
-              "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmListaProductos.cs",
-              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmListaProductos.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Ferreteria\\Forms\\frmListaProductos.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T02:21:25.68Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 6,
               "Title": "frmListaVentas.cs",
               "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmListaVentas.cs",
               "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmListaVentas.cs",
               "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmListaVentas.cs",
               "RelativeToolTip": "Ferreteria\\Forms\\frmListaVentas.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAowG0AAABOAAAAAAAAAA==",
+              "ViewState": "AgIAAFsBAAAAAAAAAAAvwHcBAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T02:03:25.764Z"
+              "WhenOpened": "2025-04-16T18:51:55.221Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "frmCaja.Designer.cs",
-              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmCaja.Designer.cs",
-              "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmCaja.Designer.cs",
-              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmCaja.Designer.cs",
-              "RelativeToolTip": "Ferreteria\\Forms\\frmCaja.Designer.cs",
-              "ViewState": "AgIAAJgAAAAAAAAAAAAcwLQAAABhAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "frmListaVentas.cs [Dise\u00F1o]",
+              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmListaVentas.cs",
+              "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmListaVentas.cs",
+              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmListaVentas.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Ferreteria\\Forms\\frmListaVentas.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-12T00:52:03.02Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "frmCaja.cs",
-              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmCaja.cs",
-              "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmCaja.cs",
-              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmCaja.cs",
-              "RelativeToolTip": "Ferreteria\\Forms\\frmCaja.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-11T23:42:49.9Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "frmMenuPrincipal.cs",
-              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmMenuPrincipal.cs",
-              "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmMenuPrincipal.cs",
-              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmMenuPrincipal.cs",
-              "RelativeToolTip": "Ferreteria\\Forms\\frmMenuPrincipal.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAowE8AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-11T21:54:53.683Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "frmMenuPrincipal.cs [Dise\u00F1o]",
-              "DocumentMoniker": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmMenuPrincipal.cs",
-              "RelativeDocumentMoniker": "Ferreteria\\Forms\\frmMenuPrincipal.cs",
-              "ToolTip": "E:\\Proyectos\\Ferreteria Erick\\Codigo\\Ferreteria\\Ferreteria\\Forms\\frmMenuPrincipal.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Ferreteria\\Forms\\frmMenuPrincipal.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-11T21:48:20.721Z"
+              "WhenOpened": "2025-04-16T18:51:47.051Z"
             }
           ]
         }

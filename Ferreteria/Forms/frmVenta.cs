@@ -6,9 +6,12 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
+using System.Net.Sockets;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Ferreteria.Forms
@@ -18,10 +21,11 @@ namespace Ferreteria.Forms
         #region Variables Globales
         public int IdUsuario, idVenta, idCliente;
         public decimal IVA;
-        public bool descuentos, facturacion;
+        public bool descuentos, facturacion, DescuentosPorProducto;
         utilidades util = new utilidades();
         Imagenes imgz = new Imagenes();
         Estilos estilos = new Estilos();
+        public ConfiguracionTienda Config { get; private set; }
         #endregion
 
         public frmVenta(int idUsuario)
@@ -45,6 +49,8 @@ namespace Ferreteria.Forms
             estilosbtnCobrar();
             estilos.EstilizarDataGridViewPOS(dgProductos);
             txtProducto.Focus(); // Enfocar el campo de producto al cargar el formulario
+            // Cargar configuración al inicializar
+            Config = ConfiguracionTienda.CargarConfiguracion();
         }
 
         #region Asignacion de fecha inicial
@@ -115,9 +121,21 @@ namespace Ferreteria.Forms
                     dgProductos.Rows[rowIndex].Cells["colId"].Value = row["Id"];
                     dgProductos.Rows[rowIndex].Cells["colCodigo"].Value = row["CodigoDeBarras"];
                     dgProductos.Rows[rowIndex].Cells["colNombre"].Value = row["Nombre"];
-                    dgProductos.Rows[rowIndex].Cells["colCostoUnitario"].Value = row["CostoUnitario"];
+                    if (DescuentosPorProducto)
+                    {
+                        dgProductos.Rows[rowIndex].Cells["colTotal"].Value = int.Parse(txtCantidad.Text) * (decimal.Parse(row["CostoUnitario"].ToString()) - decimal.Parse(txtDescuentoPorProducto.Text));
+                        dgProductos.Rows[rowIndex].Cells["colCostoUnitario"].Value = (decimal.Parse(row["CostoUnitario"].ToString()) - decimal.Parse(txtDescuentoPorProducto.Text));
+                        txtDescuentoPorProducto.Text = "0.00"; // Reiniciar el descuento a 0.00
+                        cbDescuentoPorProducto.Checked = false; // Reiniciar el checkbox
+                    }
+                    else
+                    {
+                        dgProductos.Rows[rowIndex].Cells["colTotal"].Value = int.Parse(txtCantidad.Text) * decimal.Parse(row["CostoUnitario"].ToString());
+                        dgProductos.Rows[rowIndex].Cells["colCostoUnitario"].Value = row["CostoUnitario"];
+                    }
+                        
                     dgProductos.Rows[rowIndex].Cells["colCantidad"].Value = txtCantidad.Text;
-                    dgProductos.Rows[rowIndex].Cells["colTotal"].Value = int.Parse(txtCantidad.Text) * decimal.Parse(row["CostoUnitario"].ToString());
+                    
                     dgProductos.Rows[rowIndex].Cells["colExistencia"].Value = row["Existencias"];
                     dgProductos.Rows[rowIndex].Cells["colFotografia"].Value = row["Fotografia"];
                     dgProductos.Rows[rowIndex].Cells["colDesc"].Value = row["DescripcionCorta"];
@@ -512,6 +530,7 @@ namespace Ferreteria.Forms
             {
                 if (RecopilarDatosVentaDetalle(ConvertGridToTable(dgProductos)))
                 {
+                    ImprimirYGuardarTicket(ConvertGridToTable(dgProductos));
                     MessageBox.Show("Venta generada con éxito \n Su cambio es: " + lbCambio.Text, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Limpiar();
                     txtProducto.Focus();
@@ -588,6 +607,208 @@ namespace Ferreteria.Forms
             }
         }
 
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            // Verificar si hay una fila seleccionada
+            if (dgProductos.SelectedRows.Count > 0)
+            {
+                // Eliminar la fila seleccionada
+                dgProductos.Rows.RemoveAt(dgProductos.SelectedRows[0].Index);
+                validarTotal(ConvertGridToTable(dgProductos));
+            }
+            else
+            {
+                MessageBox.Show("Selecciona  una fila para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+
+        private string baseDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Tickets");
+
+        public void ImprimirYGuardarTicket(DataTable dtProductos)
+        {
+            // Configuración inicial
+            string fechaActual = DateTime.Now.ToString("yyyyMMdd");
+            string directorioDia = Path.Combine(baseDirectory, fechaActual);
+            string archivoTicket = GenerarNombreArchivo(directorioDia);
+
+            // Crear directorios si no existen
+            if (!Directory.Exists(baseDirectory)) Directory.CreateDirectory(baseDirectory);
+            if (!Directory.Exists(directorioDia)) Directory.CreateDirectory(directorioDia);
+
+            // Generar contenido del ticket
+            StringBuilder ticketContent = new StringBuilder();
+            decimal total = 0;
+
+            // Encabezado
+            string encabezado = "==========================================\n||                                      ||\n||           MATERIALES BARVS           ||\n||                                      ||\n==========================================\n";
+            ticketContent.AppendLine(encabezado);
+            // Usar los valores de la configuración
+            string Datos = $"{Config.NombreTienda}\n{Config.Direccion}\nRFC: {Config.RFC}\nTel: {Config.Telefono}";
+            ticketContent.AppendLine(Datos);
+            ticketContent.AppendLine("----------------------------------------");
+            ticketContent.AppendLine($"Fecha: {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
+            ticketContent.AppendLine("----------------------------------------");
+            ticketContent.AppendLine(FormatearLineaColumnas("#", "PRODUCTO", "PRECIO", "CANT"));
+            ticketContent.AppendLine("----------------------------------------");
+
+            // Detalle de productos
+            foreach (DataRow row in dtProductos.Rows)
+            {
+                string producto = row["colNombre"].ToString();
+                decimal precio = Convert.ToDecimal(row["ColCostoUnitario"]);
+                int cantidad = Convert.ToInt32(row["colCantidad"]);
+                int id = Convert.ToInt32(row["colId"]);
+                decimal subtotal = Convert.ToDecimal(row["colTotal"]);
+                total += subtotal;
+
+                ticketContent.AppendLine(FormatearLineaColumnas(
+                    id.ToString(),
+                    producto,
+                    precio.ToString("C2"),
+                    cantidad.ToString()
+                ));
+            }
+
+            // Totales
+            ticketContent.AppendLine("----------------------------------------");
+            ticketContent.AppendLine($"SUBTOTAL: {txtSubtotal.Text}");
+            ticketContent.AppendLine($"DESCUENTO: {txtDescuentos.Text}");
+            ticketContent.AppendLine($"PAGO: {txtCantidadPagada.Text}");
+            ticketContent.AppendLine($"IVA: {txtIva.Text}");
+            ticketContent.AppendLine($"TOTAL: {total.ToString("C2")}");
+            ticketContent.AppendLine($"CAMBIO: {lbCambio.Text}");
+            ticketContent.AppendLine("\n----------------------------------------");
+            ticketContent.AppendLine(Config.Mensaje);
+
+            // Guardar en archivo
+            File.WriteAllText(archivoTicket, ticketContent.ToString());
+
+            // Imprimir en impresora térmica
+            ImprimirEnTermica(ticketContent.ToString());
+            //EnvioPruebasTicket(archivoTicket);
+        }
+
+        private string GenerarNombreArchivo(string directorio)
+        {
+            int consecutivo = 1;
+            string nombreBase = "Ticket";
+            string extension = ".txt";
+
+            // Buscar el último consecutivo usado hoy
+            if (Directory.Exists(directorio))
+            {
+                string[] archivos = Directory.GetFiles(directorio, $"{nombreBase}*{extension}");
+                foreach (string archivo in archivos)
+                {
+                    string nombre = Path.GetFileNameWithoutExtension(archivo);
+                    if (nombre.StartsWith(nombreBase) && int.TryParse(nombre.Replace(nombreBase, ""), out int num))
+                    {
+                        if (num >= consecutivo) consecutivo = num + 1;
+                    }
+                }
+            }
+
+            return Path.Combine(directorio, $"{nombreBase}{consecutivo}{extension}");
+        }
+
+        private string FormatearLineaColumnas(string col1, string col2, string col3, string col4)
+        {
+            const int anchoCol1 = 3;   // #
+            const int anchoCol2 = 25;  // Producto
+            const int anchoCol3 = 9;   // Precio
+            const int anchoCol4 = 5;   // Cant
+
+            return $"{col1.PadRight(anchoCol1).Substring(0, Math.Min(col1.Length, anchoCol1))} " +
+                   $"{col2.PadRight(anchoCol2).Substring(0, Math.Min(col2.Length, anchoCol2))} " +
+                   $"{col3.PadLeft(anchoCol3).Substring(0, Math.Min(col3.Length, anchoCol3))} " +
+                   $"{col4.PadLeft(anchoCol4).Substring(0, Math.Min(col4.Length, anchoCol4))}";
+        }
+
+        private void ImprimirEnTermica(string contenido)
+        {
+            try
+            {
+                using (SerialPort port = new SerialPort(Config.Impresora.Puerto)) // Ajustar puerto
+                {
+                    port.Open();
+
+                    // Configuración inicial
+                    byte[] initialize = { 0x1B, 0x40 };
+                    byte[] leftAlign = { 0x1B, 0x61, 0x00 };
+                    byte[] smallFont = { 0x1B, 0x21, 0x00 };
+
+                    port.Write(initialize, 0, initialize.Length);
+                    port.Write(leftAlign, 0, leftAlign.Length);
+                    port.Write(smallFont, 0, smallFont.Length);
+
+                    // Enviar línea por línea
+                    using (StringReader reader = new StringReader(contenido))
+                    {
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            port.Write(line + "\n");
+                        }
+                    }
+
+                    // Cortar papel
+                    byte[] cut = { 0x1D, 0x56, 0x01 };
+                    port.Write(cut, 0, cut.Length);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al imprimir: {ex.Message}");
+            }
+        }
+
+        public void EnvioPruebasTicket(string ruta)
+        { // Ruta de tu archivo .txt
+            string printerIp = "localhost"; // IP del emulador o impresora
+            int printerPort = 1234; // Puerto estándar para impresoras térmicas
+
+            try
+            {
+                // Leer el contenido del archivo .txt
+                string fileContent = File.ReadAllText(ruta, Encoding.ASCII);
+
+                // Convertir el texto a bytes (incluyendo comandos ESC/POS si son necesarios)
+                byte[] data = Encoding.ASCII.GetBytes("\x1B@"); // Inicializar impresora
+                byte[] fileBytes = Encoding.ASCII.GetBytes(fileContent);
+                byte[] cutCommand = Encoding.ASCII.GetBytes("\x1D\x56\x41\x00"); // Corte de papel
+
+                // Combinar todo en un solo byte array
+                byte[] finalData = new byte[data.Length + fileBytes.Length + cutCommand.Length];
+                Buffer.BlockCopy(data, 0, finalData, 0, data.Length);
+                Buffer.BlockCopy(fileBytes, 0, finalData, data.Length, fileBytes.Length);
+                Buffer.BlockCopy(cutCommand, 0, finalData, data.Length + fileBytes.Length, cutCommand.Length);
+
+                // Enviar por TCP/IP
+                using (TcpClient client = new TcpClient(printerIp, printerPort))
+                using (NetworkStream stream = client.GetStream())
+                {
+                    stream.Write(finalData, 0, finalData.Length);
+                    Console.WriteLine($"Archivo '{ruta}' enviado a {printerIp}:{printerPort}.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+        }
+
+        private void cbDescuentoPorProducto_CheckedChanged(object sender, EventArgs e)
+        {
+            DescuentosPorProducto = cbDescuentoPorProducto.Checked;
+            txtDescuentoPorProducto.Enabled = DescuentosPorProducto;
+        }
+
         private void txtRFC_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -635,6 +856,7 @@ namespace Ferreteria.Forms
             txtRFC.Text = "XAXX010101000";
             BuscarCliente();
             pbImgProducto.BackgroundImage = Properties.Resources.LogoRecortado;
+
         }
 
         

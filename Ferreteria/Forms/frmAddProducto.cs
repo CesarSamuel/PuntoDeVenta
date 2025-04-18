@@ -21,7 +21,7 @@ namespace Ferreteria.Forms
         public int IdUsuario, IdProducto, idDepartamento, existencias, idSucursal;
         public string nombre, descCorta, descLarga, codigoBarras, rutaImagen;
         public decimal costoUnitario;
-        public byte[] imgBytes;
+        public byte[] imgBytes, ImagenProducto;
         #endregion
 
         #region Constructor
@@ -314,7 +314,15 @@ namespace Ferreteria.Forms
             idDepartamento = Convert.ToInt32(cboDepartamento.SelectedValue);
             existencias = Convert.ToInt32(txtExistencias.Text);
             rutaImagen = txtRutaImagen.Text;
-            imgBytes = File.ReadAllBytes(rutaImagen);
+            if(rutaImagen == "")
+            {
+                imgBytes = ImagenProducto;
+            }
+            else
+            {
+                imgBytes = File.ReadAllBytes(rutaImagen);
+            }
+                
             idSucursal = Convert.ToInt32(cboSucursal.SelectedValue);
         }
         #endregion
@@ -502,6 +510,7 @@ namespace Ferreteria.Forms
                 cboSucursal.SelectedValue = Convert.ToInt32(dtProducto.Rows[0]["SucursalId"]);
                 txtMonto.Text = "$" + dtProducto.Rows[0]["CostoUnitario"].ToString();
                 pbImagen.BackgroundImage = imgz.ByteArrayToImage(dtProducto.Rows[0]["Fotografia"] as byte[]);
+                ImagenProducto = dtProducto.Rows[0]["Fotografia"] as byte[];
             }
             btnGuardar.Text = "Modificar";
             btnEliminar.Visible = true;
@@ -521,7 +530,7 @@ namespace Ferreteria.Forms
                     { "@CostoUnitario", costoUnitario },
                     { "@Existencias", existencias },
                     { "@CodigoDeBarras", codigoBarras },
-                    { "@RutaImagen", rutaImagen },
+                    { "@Fotografia", imgBytes ?? (object)DBNull.Value},
                     { "@UsuarioModificadorId", IdUsuario },
                     { "@DepartamentoId", idDepartamento },
                     { "@SucursalId", idSucursal }

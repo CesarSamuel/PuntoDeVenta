@@ -283,6 +283,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilidades\ConfiguracionTienda.cs" />
     <Compile Include="Utilidades\Estilos.cs" />
     <Compile Include="Utilidades\Filtros.cs" />
     <Compile Include="Utilidades\Imagenes.cs" />
@@ -342,6 +343,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Logo.ico" />
+    <None Include="Resources\eliminar.png" />
     <None Include="Resources\money.png" />
     <None Include="Resources\Buscador.png" />
     <None Include="Resources\LogoRecortado.png" />
